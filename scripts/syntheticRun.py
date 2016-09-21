@@ -29,7 +29,7 @@ def evaluateSynthetic(n):
                 sig = np.loadtxt('../syntheticData/K'+n+'/'+test+K+'.csv', delimiter=',')
                 sig = 1-np.array(sig)
                 sig = np.nan_to_num(sig)
-                sigd = limitPrediction(sig, 100)
+                sigd = limitPrediction(sig, 50)
                 if roc:
                     fpr, tpr, f = roc_curve(label, sigd)
                     print auc(fpr, tpr)
@@ -52,8 +52,8 @@ if __name__ == '__main__':
     np.random.seed(0)
 
     roc = True
-    # for i in range(4):
-    #     run_synthetic(i)
+    for i in range(4):
+        run_synthetic(i)
     for i in range(4):
         print '======================'
         evaluateSynthetic(i)

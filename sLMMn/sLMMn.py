@@ -258,7 +258,8 @@ def cv_train(X, Y, transY, regList, SKlearn=True, selectK=False, K=100):
     return breg, ss
 
 def run_synthetic(dataMode):
-    discoverNum = 100
+    discoverNum = 50
+    numintervals = 5000
     snps, Y, Kva, Kve, causal = dataLoader.load_data_synthetic(dataMode)
     K = np.dot(snps, snps.T)
     if dataMode < 3:
@@ -266,7 +267,8 @@ def run_synthetic(dataMode):
     else:
         dataMode = 'n'
     for mode in ['linear', 'lmm', 'lmm2', 'lmmn']:
-        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=discoverNum, mode=mode)
+        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-5, ldeltamax=5, discoverNum=discoverNum, mode=mode)
+        print res['ldelta0'], res['monitor_nm']['nllopt']
         # hypothesis weights
         fileName1 = '../syntheticData/K'+dataMode+'/single_' + mode
         result = np.array(res['single'])

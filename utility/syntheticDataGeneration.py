@@ -16,7 +16,7 @@ g = 5
 sig = 1
 
 we = 0.01
-wh = 0.5
+wh = 5
 wg = [0.5, 0.25, 0.125, 0.0625]
 # wg = [1, 1, 1, 1]
 
@@ -30,6 +30,9 @@ for i in range(g):
     X.extend(x)
 X = np.array(X)
 print X.shape
+
+X[X>-1] = 1
+X[X<=-1] = 0
 
 # plt.show()
 
@@ -69,9 +72,9 @@ causal = np.array(zip(idx, w))
 np.savetxt('../syntheticData/causal.csv', causal, '%5.2f', delimiter=',')
 ys = []
 
-idx_c = scipy.random.randint(0,n,confoundNum).astype(int)
-w_c = 1*np.random.normal(0, 1, size=confoundNum)
 for i in range(3):
+    idx_c = scipy.random.randint(0,n,confoundNum).astype(int)
+    w_c = 1*np.random.normal(0, 1, size=confoundNum)
     m = cl.fit_predict(C)
     c = cl.cluster_centers_
 
