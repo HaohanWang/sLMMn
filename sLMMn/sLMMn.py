@@ -12,6 +12,10 @@ from helpingMethods import *
 
 from utility import dataLoader
 
+def normalize(x):
+    s = np.sum(x)
+    return s/x
+
 def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50, mode='linear'):
     """
     train linear mixed model lasso
@@ -49,8 +53,7 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
         SUX = scipy.dot(U.T, X)
         SUX = SUX * scipy.tile(Sdi_sqrt, (n_f, 1)).T
         SUy = scipy.dot(U.T, y)
-        TransY = scipy.reshape(Sdi_sqrt, (n_s, 1))
-        # SUy = SUy * scipy.reshape(Sdi_sqrt, (n_s, 1)) # todo: here the fastLMM and lmm-lasso are different
+        SUy = SUy * scipy.reshape(Sdi_sqrt, (n_s, 1))
         SUX0 = scipy.dot(U.T, X0)
         SUX0 = SUX0 * scipy.tile(Sdi_sqrt, (1, 1)).T
     else:
@@ -60,16 +63,15 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
         monitor_nm = {}
         monitor_nm['ldeltaopt'] = 0
         monitor_nm['nllopt'] = 0
-        TransY = None
         SUX0 = None
 
-    w1 = hypothesisTest(SUX, SUy, X, TransY, SUX0, X0)
+    w1 = hypothesisTest(SUX, SUy, X, SUX0, X0)
     regs = []
     for i in range(5, 20):
         for j in range(1, 10):
             regs.append(j*np.power(10.0, -i))
-    breg, ss = cv_train(SUX, SUy.reshape([n_s, 1]), transY=TransY,regList=regs, SKlearn=True, selectK=True, K=discoverNum)
-    w2 = train_lasso(SUX, SUy, breg, TransY)
+    breg, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regList=regs, SKlearn=True, selectK=True, K=discoverNum)
+    w2 = train_lasso(SUX, SUy, breg)
 
     time_end = time.time()
     time_diff = time_end - time_start
@@ -86,37 +88,36 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
     return res
 
 
-def train_lasso(X, y, mu, TransY):
-    if TransY is not None:
-        y = y * TransY
+def train_lasso(X, y, mu):
     lasso = Lasso(alpha=mu)
     lasso.fit(X, y)
     return lasso.coef_
 
-def hypothesisTest(UX, Uy, X, TransY, UX0, X0):
+def hypothesisTest(UX, Uy, X, UX0, X0):
     [m, n] = X.shape
     p = []
     for i in range(n):
-        if TransY is not None:
+        if UX0 is not None:
             UXi = np.hstack([UX0 ,UX[:, i].reshape(m, 1)])
-            Xi = np.hstack([X0 ,X[:, i].reshape(m, 1)])
-            XX = matrixMult(UXi.T, Xi)
+            XX = matrixMult(UXi.T, UXi)
             XX_i = linalg.pinv(XX)
-            beta = matrixMult(matrixMult(XX_i, Xi.T), Uy)
-            Uyr = Uy - matrixMult(Xi, beta)
-            Q = np.dot( (Uyr* TransY).T, Uyr)
+            beta = matrixMult(matrixMult(XX_i, UXi.T), Uy)
+            Uyr = Uy - matrixMult(UXi, beta)
+            Q = np.dot( Uyr.T, Uyr)
             sigma = Q * 1.0 / m
         else:
-            Xi = np.hstack([X0 ,X[:, i].reshape(m, 1)])
+            Xi = np.hstack([X0 ,UX[:, i].reshape(m, 1)])
             XX = matrixMult(Xi.T, Xi)
             XX_i = linalg.pinv(XX)
             beta = matrixMult(matrixMult(XX_i, Xi.T), Uy)
             Uyr = Uy - matrixMult(Xi, beta)
             Q = np.dot(Uyr.T, Uyr)
             sigma = Q * 1.0 / m
-        ts, ps = tstat(beta[1], np.abs(XX_i[1, 1]), sigma, 1, m)
+        ts, ps = tstat(beta[1], XX_i[1, 1], sigma, 1, m)
         if -1e10 < ts < 1e10:
             p.append(ps)
+        else:
+            p.append(1)
     return p
 
 def nLLeval(ldelta, Uy, S, REML=True):
@@ -173,6 +174,8 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     if mode == 'lmm2':
         S = np.power(S, 2) + S
 
+    S = normalize(S)
+
     Uy = scipy.dot(U.T, y)
 
     # grid search
@@ -199,17 +202,20 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         monitor['nllopt'] = nllmin
     else:
         Stmp = S
-        kchoices = [1, 2, 3, 4]
+        kchoices = [0, 1, 2, 3, 4]
         knum = len(kchoices)
         global_S = S
         global_ldeltaopt = scipy.inf
         global_min = scipy.inf
         for ki in range(knum):
             kc = kchoices[ki]
-            if kc == 1:
+            if kc == 0:
+                Stmp = np.ones_like(S)
+            elif kc == 1:
                 Stmp = S
             else:
                 Stmp += np.power(S, kc)
+            Stmp = normalize(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
             ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
@@ -240,9 +246,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     return S, U, ldeltaopt_glob, monitor
 
 
-def cv_train(X, Y, transY, regList, SKlearn=True, selectK=False, K=100):
-    if transY is not None:
-        Y = Y*transY
+def cv_train(X, Y, regList, SKlearn=True, selectK=False, K=100):
     ss = []
     b = np.inf
     breg = 0
