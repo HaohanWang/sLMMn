@@ -2,7 +2,7 @@ __author__ = 'Haohan Wang'
 
 from evaluation import *
 from sklearn.metrics import auc
-import matplotlib.ticker as ticker
+#import matplotlib.ticker as ticker
 
 def evaluate(runningMode, fileType, roc):
 
