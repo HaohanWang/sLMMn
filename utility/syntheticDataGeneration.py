@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 
-np.random.seed(12)
+np.random.seed(0)
 
 dense = 0.05
 

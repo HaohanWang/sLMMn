@@ -168,13 +168,14 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     ldeltamin += scale
     ldeltamax += scale
 
+    S = normalize(S)
+
     if S is None or U is None:
         S, U = linalg.eigh(K)
 
     if mode == 'lmm2':
-        S = np.power(S, 2) + S
+        S = normalize(normalize(np.power(S, 2)) + S)
 
-    S = normalize(S)
 
     Uy = scipy.dot(U.T, y)
 
@@ -214,7 +215,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
             elif kc == 1:
                 Stmp = S
             else:
-                Stmp += np.power(S, kc)
+                Stmp += normalize(np.power(S, kc))
             Stmp = normalize(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
@@ -263,7 +264,7 @@ def cv_train(X, Y, regList, SKlearn=True, selectK=False, K=100):
 
 def run_synthetic(dataMode):
     discoverNum = 50
-    numintervals = 5000
+    numintervals = 500
     snps, Y, Kva, Kve, causal = dataLoader.load_data_synthetic(dataMode)
     K = np.dot(snps, snps.T)
     if dataMode < 3:
