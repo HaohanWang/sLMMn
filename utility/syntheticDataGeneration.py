@@ -17,7 +17,7 @@ def generateData(seed):
     sig = 1
 
     we = 0.01
-    wh = 1
+    wh = 5
     wg = [0.5, 0.25, 0.125, 0.0625]
     # wg = [1, 1, 1, 1]
 
@@ -123,4 +123,4 @@ def generateData(seed):
     # plt.show()
 
 if __name__=='__main__':
-    generateData(12)
+    generateData(2)
