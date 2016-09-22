@@ -72,4 +72,4 @@ if __name__ == '__main__':
             rs.extend(r)
         rss.append(rs)
         print '======================'
-    np.savetxt('meta.csv', np.array(rss), delimiter=',')
+    np.savetxt('meta_new.csv', np.array(rss), delimiter=',')
