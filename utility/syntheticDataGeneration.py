@@ -18,8 +18,8 @@ def generateData(seed):
 
     we = 0.01
     wh = 5
-    wg = [0.5, 0.25, 0.125, 0.0625]
-    # wg = [1, 1, 1, 1]
+    # wg = [0.5, 0.25, 0.125, 0.0625]
+    wg = [1, 1, 1, 1]
 
     center = np.random.uniform(0, 1, [g,p])
     sample = n/g
