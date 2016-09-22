@@ -69,7 +69,7 @@ if __name__ == '__main__':
         rs = []
         for i in range(4):
             r = evaluateSynthetic(i)
-            rs.extend(i)
+            rs.extend(r)
         rss.append(rs)
         print '======================'
     np.savetxt('meta.csv', np.array(rss), delimiter=',')
