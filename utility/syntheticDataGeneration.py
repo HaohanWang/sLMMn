@@ -2,7 +2,7 @@ __author__ = 'Haohan Wang'
 
 import numpy as np
 import scipy
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 
@@ -100,9 +100,9 @@ def generateData(seed):
 
     np.savetxt('../syntheticData/Kn/y.csv', y, '%5.2f',delimiter=',')
 
-    x = xrange(len(y))
-    plt.scatter(x, y)
-    plt.show()
+    # x = xrange(len(y))
+    # plt.scatter(x, y)
+    # plt.show()
 
     # Z = linkage(X, 'ward')
     #
