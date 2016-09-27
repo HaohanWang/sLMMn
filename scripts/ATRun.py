@@ -11,7 +11,7 @@ def ATRunning():
     from evaluation.evaluation import evaluateAT
     roc = True
     rss = []
-    for i in range(20):
+    for i in range(10):
         print '======================'
         print 'seed:', i
         generateData(i)
