@@ -14,10 +14,7 @@ def ATRunning():
     for i in range(20):
         print '======================'
         print 'seed:', i
-        if i == 0:
-            generateData(i, True)
-        else:
-            generateData(i)
+        generateData(i)
         for j in range(4):
             run_AT(j, i)
         rs = []

@@ -29,6 +29,6 @@ def load_data_AT_pheno(n, s):
     else:
         n = str(n)
     s = str(s)
-    Y = np.loadtxt('../syntheticData/K'+n+'/y_'+s+'.csv', delimiter=',')
-    causal = np.loadtxt('../syntheticData/causal_'+s+'.csv', delimiter=',')
+    Y = np.loadtxt('../ATData/K'+n+'/y_'+s+'.csv', delimiter=',')
+    causal = np.loadtxt('../ATData/causal_'+s+'.csv', delimiter=',')
     return Y, causal
