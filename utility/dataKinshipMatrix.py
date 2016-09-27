@@ -18,15 +18,9 @@ def calculateHigherOrderKinship():
 
     phenos = np.loadtxt(path + '/athaliana2.phenos.csv',)
 
-    C = np.dot(phenos, phenos.T)
-    C2 = np.dot(C, C)
-    C3 = np.dot(C2, C)
-    C4 = np.dot(C3, C)
+    P = np.dot(phenos, phenos.T)
 
-    np.savetxt('P1.csv', C, delimiter=',')
-    np.savetxt('P2.csv', C2, delimiter=',')
-    np.savetxt('P3.csv', C3, delimiter=',')
-    np.savetxt('P4.csv', C4, delimiter=',')
+    np.savetxt('C.csv', P, delimiter=',')
 
 
 if __name__ == '__main__':
