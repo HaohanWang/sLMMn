@@ -1,7 +1,7 @@
 import numpy as np
 from scipy import linalg
 
-path = '/home/haohanw/FaSTLMM_K2_Sparsity/data'
+path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
 
 def load_data_synthetic(n):
     if n == 3:
