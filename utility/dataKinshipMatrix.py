@@ -4,14 +4,15 @@ import numpy as np
 
 path = '/home/haohanw/FaSTLMM_K2_Sparsity/data'
 
-def central(x):
+def normalize(x):
     m = np.mean(x)
-    return x-m
+    s = np.std(x)
+    return (x-m)/s
 
 def calculateHigherOrderKinship():
     snps = np.loadtxt(path + '/athaliana2.snps.csv', delimiter=',')
     C = np.dot(snps, snps.T)
-    C = central(C)
+    C = normalize(C)
     C2 = np.dot(C, C)
     C3 = np.dot(C2, C)
     C4 = np.dot(C3, C)
