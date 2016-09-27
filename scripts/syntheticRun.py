@@ -60,7 +60,7 @@ if __name__ == '__main__':
     from utility.syntheticDataGeneration import generateData
     roc = True
     rss = []
-    for i in range(20):
+    for i in range(1,2):
         print '======================'
         print 'seed:', i
         generateData(i)
@@ -72,4 +72,5 @@ if __name__ == '__main__':
             rs.extend(r)
         rss.append(rs)
         print '======================'
+    print rss
     np.savetxt('meta.csv', np.array(rss), delimiter=',')

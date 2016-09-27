@@ -14,7 +14,11 @@ from utility import dataLoader
 
 def normalize(x):
     s = np.sum(x)
-    return s/x
+    return x/s
+
+def central(x):
+    m = np.mean(x)
+    return x-m
 
 def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50, mode='linear'):
     """
@@ -168,8 +172,6 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     ldeltamin += scale
     ldeltamax += scale
 
-    S = normalize(S)
-
     if S is None or U is None:
         S, U = linalg.eigh(K)
 
@@ -216,7 +218,6 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
                 Stmp = S
             else:
                 Stmp = np.power(S, kc)
-            Stmp = normalize(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
             ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin

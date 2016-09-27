@@ -6,9 +6,14 @@ import scipy
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 
+def centralize(x):
+    m = np.mean(x)
+    return x-m
+
 def normalize(x):
-    s = np.sum(x)
-    return s/x
+    m = np.mean(x)
+    s = np.std(x)
+    return (x-m)/s
 
 def generateData(seed):
     np.random.seed(seed)
@@ -19,11 +24,9 @@ def generateData(seed):
     p = 1000
     g = 5
     sig = 1
-    sigC = 1e-2
+    sigC = 1
 
-    we = 0.1
-    wh = 1
-    wg = 1
+    we = 1
 
     center = np.random.uniform(0, 1, [g,p])
     sample = n/g
@@ -31,7 +34,6 @@ def generateData(seed):
 
     for i in range(g):
         x = np.random.multivariate_normal(center[i,:], sig*np.diag(np.ones([p,])), size=sample)
-        # plt.scatter(x[:,0], x[:,1], c=c[i])
         X.extend(x)
     X = np.array(X)
     print X.shape
@@ -40,7 +42,6 @@ def generateData(seed):
     X[X<=-1] = 0
 
     featureNum = int(p * dense)
-    confoundNum = int(n*0.5)
     idx = scipy.random.randint(0,p,featureNum).astype(int)
     idx = sorted(idx)
     w = 1*np.random.normal(0, 1, size=featureNum)
@@ -50,7 +51,7 @@ def generateData(seed):
     error = np.random.normal(0, 1, n)
 
     C = np.dot(X, X.T)
-    # C = normalize(C)
+    C = centralize(C)
 
     Kva, Kve = np.linalg.eigh(C)
     np.savetxt('../syntheticData/Kva.csv', Kva, delimiter=',')
@@ -59,28 +60,26 @@ def generateData(seed):
     causal = np.array(zip(idx, w))
     np.savetxt('../syntheticData/causal.csv', causal, '%5.2f', delimiter=',')
 
-    y = we*error + ypheno
+    y = we*error + normalize(ypheno)
     np.savetxt('../syntheticData/K0/y.csv', y, '%5.2f',delimiter=',')
 
     yK1 = np.random.multivariate_normal(ypheno, sigC*C, size=1)
     yK1 = yK1.reshape(yK1.shape[1])
-    yK1 = we*error + yK1
+    yK1 = we*error + normalize(yK1)
     np.savetxt('../syntheticData/K1/y.csv', yK1, '%5.2f',delimiter=',')
 
     C2 = np.dot(C, C)
-    # C2 = normalize(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC*C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
-    yK2 = we*error + yK2
+    yK2 = we*error + normalize(yK2)
     np.savetxt('../syntheticData/K2/y.csv', yK2, '%5.2f',delimiter=',')
 
     n = np.random.randint(1, 4)
     for i in range(n):
         C = np.dot(C, C)
-        # C = normalize(C)
     yKn = np.random.multivariate_normal(ypheno, sigC*C, size=1)
     yKn = yKn.reshape(yKn.shape[1])
-    yKn = we*error + yKn
+    yKn = we*error + normalize(yKn)
     np.savetxt('../syntheticData/Kn/y.csv', yKn, '%5.2f',delimiter=',')
 
     # x = xrange(len(y))
