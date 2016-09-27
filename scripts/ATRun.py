@@ -26,5 +26,13 @@ def ATRunning():
     print rss
     np.savetxt('AT_meta.csv', np.array(rss), delimiter=',')
 
+def ATRunningSingle(seed):
+    from utility.ATDataGeneration import generateData
+    from sLMMn.sLMMn import run_AT
+    generateData(seed)
+    for j in range(4):
+        run_AT(j, seed)
+
 if __name__ == '__main__':
-    ATRunning()
+    seed = int(sys.argv[1])
+    ATRunningSingle(seed)
