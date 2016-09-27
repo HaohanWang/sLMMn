@@ -21,7 +21,7 @@ def generateData(seed):
     sig = 1
     sigC = 1e-2
 
-    we = 0.01
+    we = 0.1
     wh = 1
     wg = 1
 
