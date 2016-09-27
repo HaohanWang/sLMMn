@@ -14,21 +14,12 @@ def visualize(m):
     plt.imshow(m)
     plt.show()
 
-snps, Y, Kva, Kve, causal = load_data_synthetic(1)
-K1 = normalize(np.dot(snps, snps.T))
+C1 = np.loadtxt('../tmpData/C1.csv', delimiter=',')
+C2 = np.loadtxt('../tmpData/C2.csv', delimiter=',')
+C3 = np.loadtxt('../tmpData/C3.csv', delimiter=',')
+C4 = np.loadtxt('../tmpData/C4.csv', delimiter=',')
 
-S, U = np.linalg.eigh(K1)
-S = normalize(S)
-print S
-# print normalize(np.power(S, 2))
-print normalize(S + normalize(np.power(S, 2)))
-
-# K2 = np.dot(K1, K1)
-# K3 = np.dot(K2, K1)
-# K4 = np.dot(K3, K1)
-#
-# visualize(K1)
-# visualize(K2)
-# visualize(K1+K2)
-# visualize(K3)
-# visualize(K1+K2+K3)
+visualize(C1)
+visualize(C2)
+visualize(C3)
+visualize(C4)
