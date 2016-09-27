@@ -3,7 +3,7 @@ __author__ = 'Haohan Wang'
 import numpy as np
 import scipy
 
-path = '/home/haohanw/FaSTLMM_K2_Sparsity/data'
+path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
 
 def centralize(x):
     m = np.mean(x)
