@@ -174,8 +174,8 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         S, U = linalg.eigh(K)
 
     if mode == 'lmm2':
-        S = normalize(normalize(np.power(S, 2)) + S)
-
+        # S = normalize(normalize(np.power(S, 2)) + S)
+        S = np.power(S, 2)
 
     Uy = scipy.dot(U.T, y)
 
@@ -215,7 +215,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
             elif kc == 1:
                 Stmp = S
             else:
-                Stmp += normalize(np.power(S, kc))
+                Stmp = np.power(S, kc)
             Stmp = normalize(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf

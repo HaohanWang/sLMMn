@@ -2,9 +2,13 @@ __author__ = 'Haohan Wang'
 
 import numpy as np
 import scipy
-#from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
+
+def normalize(x):
+    s = np.sum(x)
+    return s/x
 
 def generateData(seed):
     np.random.seed(seed)
@@ -15,11 +19,11 @@ def generateData(seed):
     p = 1000
     g = 5
     sig = 1
+    sigC = 1e-2
 
     we = 0.01
     wh = 1
-    # wg = [0.5, 0.25, 0.125, 0.0625]
-    wg = [1, 1, 1, 1]
+    wg = 1
 
     center = np.random.uniform(0, 1, [g,p])
     sample = n/g
@@ -35,8 +39,6 @@ def generateData(seed):
     X[X>-1] = 1
     X[X<=-1] = 0
 
-    # plt.show()
-
     featureNum = int(p * dense)
     confoundNum = int(n*0.5)
     idx = scipy.random.randint(0,p,featureNum).astype(int)
@@ -47,23 +49,8 @@ def generateData(seed):
     ypheno = ypheno.reshape(ypheno.shape[0])
     error = np.random.normal(0, 1, n)
 
-    cl = KMeans(n_clusters=g)
-    m = cl.fit_predict(X)
-    c = cl.cluster_centers_
-
-    Z = c[m,:]
-
-    # print Z.shape
-
-    idx_z = scipy.random.randint(0,n,confoundNum).astype(int)
-    idx_z = sorted(idx_z)
-    w_z = 1*np.random.normal(0, 1, size=confoundNum)
-    ygroup = scipy.dot(Z[:,idx_z],w_z)
-    ygroup = (ygroup-ygroup.mean())/ygroup.std()
-    ygroup = ygroup.reshape(ygroup.shape[0])
-
-    # print ygroup
     C = np.dot(X, X.T)
+    # C = normalize(C)
 
     Kva, Kve = np.linalg.eigh(C)
     np.savetxt('../syntheticData/Kva.csv', Kva, delimiter=',')
@@ -71,38 +58,41 @@ def generateData(seed):
     np.savetxt('../syntheticData/X.csv', X, delimiter=',')
     causal = np.array(zip(idx, w))
     np.savetxt('../syntheticData/causal.csv', causal, '%5.2f', delimiter=',')
-    ys = []
 
-    for i in range(3):
-        idx_c = scipy.random.randint(0,n,confoundNum).astype(int)
-        w_c = 1*np.random.normal(0, 1, size=confoundNum)
-        m = cl.fit_predict(C)
-        c = cl.cluster_centers_
-
-        Z = c[m,:]
-
-        yc = scipy.dot(Z[:,idx_c],w_c)
-        yc = (yc-yc.mean())/yc.std()
-        yc = yc.reshape(yc.shape[0])
-        ys.append(yc)
-        C = np.dot(C,C)
-
-    y = we*error + wh*ypheno
+    y = we*error + ypheno
     np.savetxt('../syntheticData/K0/y.csv', y, '%5.2f',delimiter=',')
 
-    y+= wg[0]*ygroup
-    np.savetxt('../syntheticData/K1/y.csv', y, '%5.2f',delimiter=',')
+    yK1 = np.random.multivariate_normal(ypheno, sigC*C, size=1)
+    yK1 = yK1.reshape(yK1.shape[1])
+    yK1 = we*error + yK1
+    np.savetxt('../syntheticData/K1/y.csv', yK1, '%5.2f',delimiter=',')
 
-    y += wg[1]*ys[1]
-    np.savetxt('../syntheticData/K2/y.csv', y, '%5.2f',delimiter=',')
-    for i in range(1, 3):
-        y += wg[i+1]*ys[i]
+    C2 = np.dot(C, C)
+    # C2 = normalize(C2)
+    yK2 = np.random.multivariate_normal(ypheno, sigC*C2, size=1)
+    yK2 = yK2.reshape(yK2.shape[1])
+    yK2 = we*error + yK2
+    np.savetxt('../syntheticData/K2/y.csv', yK2, '%5.2f',delimiter=',')
 
-    np.savetxt('../syntheticData/Kn/y.csv', y, '%5.2f',delimiter=',')
+    n = np.random.randint(1, 4)
+    for i in range(n):
+        C = np.dot(C, C)
+        # C = normalize(C)
+    yKn = np.random.multivariate_normal(ypheno, sigC*C, size=1)
+    yKn = yKn.reshape(yKn.shape[1])
+    yKn = we*error + yKn
+    np.savetxt('../syntheticData/Kn/y.csv', yKn, '%5.2f',delimiter=',')
 
     # x = xrange(len(y))
-    # plt.scatter(x, y)
+    # plt.scatter(x, y, color='g')
+    # plt.scatter(x, yK1, color='r')
+    # plt.scatter(x, yK2, color='b')
+    # plt.scatter(x, yKn, color='m')
     # plt.show()
+    # print normalize(y)
+    # print normalize(yK1)
+    # print normalize(yK2)
+    # print normalize(yKn)
 
     # Z = linkage(X, 'ward')
     #
@@ -123,4 +113,4 @@ def generateData(seed):
     # plt.show()
 
 if __name__=='__main__':
-    generateData(2)
+    generateData(1)
