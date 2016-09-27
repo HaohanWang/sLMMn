@@ -2,8 +2,10 @@ __author__ = 'Haohan Wang'
 
 import numpy as np
 
+path = '/home/haohanw/FaSTLMM_K2_Sparsity/data'
+
 def calculateHigherOrderKinship():
-    snps = np.loadtxt('../data/athaliana.snps.chrom1.csv', delimiter=',')
+    snps = np.loadtxt(path + '/athaliana.snps.chrom1.csv', delimiter=',')
     C = np.dot(snps, snps.T)
     C2 = np.dot(C, C)
     C3 = np.dot(C2, C)
