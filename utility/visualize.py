@@ -14,11 +14,14 @@ def visualize(m):
     plt.imshow(m)
     plt.show()
 
+C = np.loadtxt('../tmpData/C.csv', delimiter=',')
 C1 = np.loadtxt('../tmpData/C1.csv', delimiter=',')
 C2 = np.loadtxt('../tmpData/C2.csv', delimiter=',')
 C3 = np.loadtxt('../tmpData/C3.csv', delimiter=',')
 C4 = np.loadtxt('../tmpData/C4.csv', delimiter=',')
+print C
 
+visualize(C)
 visualize(C1)
 visualize(C2)
 visualize(C3)
