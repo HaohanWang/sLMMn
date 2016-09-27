@@ -1,5 +1,8 @@
 __author__ = 'Haohan Wang'
 
+import sys
+sys.path.append('../')
+
 import numpy as np
 
 def ATRunning():
