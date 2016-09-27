@@ -297,6 +297,41 @@ def run_synthetic(dataMode):
             f0.writelines(str(ri) + '\t' + str(si) + '\n')
         f0.close()
 
+def run_AT(dataMode, seed):
+    discoverNum = 50
+    numintervals = 500
+    snps, K, Kva, Kve, = dataLoader.load_data_AT_basic()
+    Y, causal = dataLoader.load_data_AT_pheno(dataMode, seed)
+    if dataMode < 3:
+        dataMode = str(dataMode)
+    else:
+        dataMode = 'n'
+    seed = str(seed)
+    for mode in ['linear', 'lmm', 'lmm2', 'lmmn']:
+        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-5, ldeltamax=5, discoverNum=discoverNum, mode=mode)
+        print res['ldelta0'], res['monitor_nm']['nllopt']
+        # hypothesis weights
+        fileName1 = '../ATData/K'+dataMode+'/single_' + mode
+        result = np.array(res['single'])
+        ldelta0 = res['ldelta0']
+        np.savetxt(fileName1 +'_' +seed+ '.csv', result, delimiter=',')
+        f2 = open(fileName1 +'_' +seed+ '.hmax.txt', 'w')
+        f2.writelines(str(ldelta0)+'\n')
+        f2.close()
+        # lasso weights
+        bw = res['combine']
+        regs = res['combine_reg']
+        ss = res['combine_ss']
+        fileName2 = '../ATData/K'+dataMode+'/lasso_' + mode
+        f1 = open(fileName2 + '_'+seed+'.csv', 'w')
+        for wi in bw:
+            f1.writelines(str(wi) + '\n')
+        f1.close()
+        f0 = open(fileName2 + '.regularizerScore_'+seed+'.txt', 'w')
+        for (ri, si) in zip(regs, ss):
+            f0.writelines(str(ri) + '\t' + str(si) + '\n')
+        f0.close()
+
 
 if __name__ == '__main__':
     at = int(sys.argv[1])
