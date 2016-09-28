@@ -33,6 +33,23 @@ def ATRunningSingle(seed):
     for j in range(4):
         run_AT(j, seed)
 
+def ATEvaluation():
+    from evaluation.evaluation import evaluateAT
+    roc = True
+    rss = []
+    for i in range(5):
+        rs = []
+        for j in range(4):
+            r = evaluateAT(j, roc, i)
+            rs.extend(r)
+        rss.append(rs)
+        print rs
+        print '======================'
+    print rss
+    np.savetxt('AT_meta.csv', np.array(rss), delimiter=',')
+
+
 if __name__ == '__main__':
-    seed = int(sys.argv[1])
-    ATRunningSingle(seed)
+    # seed = int(sys.argv[1])
+    # ATRunningSingle(seed)
+    ATEvaluation()
