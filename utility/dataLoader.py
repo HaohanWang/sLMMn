@@ -16,6 +16,19 @@ def load_data_synthetic(n):
     return snps, Y, Kva, Kve, causal
 
 
+def load_data_toy(n):
+    if n == 3:
+        n = 'n'
+    else:
+        n = str(n)
+    snps = np.loadtxt('../toyData/X.csv', delimiter=',')
+    Y = np.loadtxt('../toyData/K'+n+'/y.csv', delimiter=',')
+    causal = np.loadtxt('../toyData/causal.csv', delimiter=',')
+    Kva = np.loadtxt('../toyData/Kva.csv', delimiter=',')
+    Kve = np.loadtxt('../toyData/Kve.csv', delimiter=',')
+    return snps, Y, Kva, Kve, causal
+
+
 def load_data_AT_basic():
     X = np.loadtxt(path + 'athaliana.snps.chrom1.csv', delimiter=',')
     K = np.loadtxt('../ATData/K.csv', delimiter=',')

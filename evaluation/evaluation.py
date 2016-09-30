@@ -107,6 +107,51 @@ def evaluateSynthetic(n, roc):
                     l.append(auc(re, pr))
     return l
 
+def evaluateToy(n, roc):
+    snps, Y, Kva, Kve, causal = dataLoader.load_data_toy(n)
+
+    if n < 3:
+        n = str(n)
+    else:
+        n = 'n'
+
+    label = np.zeros(snps.shape[1])
+    label[causal[:,0].astype(int)] = 1
+
+    l = []
+
+    for test in ['single', 'lasso']:
+        # print '+++++++++++++'
+        if test == 'single':
+            for K in ['_linear' ,'_lmm', '_lmm2', '_lmmn']:
+                # print '-------------'
+                sig = np.loadtxt('../syntheticData/K'+n+'/'+test+K+'.csv', delimiter=',')
+                sig = 1-np.array(sig)
+                sig = np.nan_to_num(sig)
+                sigd = limitPrediction(sig, 50)
+                if roc:
+                    fpr, tpr, f = roc_curve(label, sigd)
+                    # print auc(fpr, tpr)
+                    l.append(auc(fpr, tpr))
+                else:
+                    pr, re, f = precision_recall_curve(label, sigd)
+                    # print auc(re, pr)
+                    l.append(auc(re, pr))
+        else:
+            for K in ['_linear' ,'_lmm', '_lmm2', '_lmmn']:
+                # print '-------------'
+                bw = np.loadtxt('../syntheticData/K'+n+'/'+test+K+'.csv', delimiter=',')
+                bw = np.abs(bw)
+                if roc:
+                    fpr, tpr, f = roc_curve(label, bw)
+                    # print auc(fpr, tpr)
+                    l.append(auc(fpr, tpr))
+                else:
+                    pr, re, f = precision_recall_curve(label, bw)
+                    # print auc(re, pr)
+                    l.append(auc(re, pr))
+    return l
+
 
 def getPositions(l):
     text = [line.strip() for line in open('../ATData/athaliana.snps.chromPositionInfo.txt')][1]

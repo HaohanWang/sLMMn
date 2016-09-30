@@ -297,6 +297,40 @@ def run_synthetic(dataMode):
             f0.writelines(str(ri) + '\t' + str(si) + '\n')
         f0.close()
 
+def run_toy(dataMode):
+    discoverNum = 50
+    numintervals = 500
+    snps, Y, Kva, Kve, causal = dataLoader.load_data_toy(dataMode)
+    K = np.dot(snps, snps.T)
+    if dataMode < 3:
+        dataMode = str(dataMode)
+    else:
+        dataMode = 'n'
+    for mode in ['linear', 'lmm', 'lmm2', 'lmmn']:
+        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-5, ldeltamax=5, discoverNum=discoverNum, mode=mode)
+        print res['ldelta0'], res['monitor_nm']['nllopt']
+        # hypothesis weights
+        fileName1 = '../toyData/K'+dataMode+'/single_' + mode
+        result = np.array(res['single'])
+        ldelta0 = res['ldelta0']
+        np.savetxt(fileName1 + '.csv', result, delimiter=',')
+        f2 = open(fileName1 + '.hmax.txt', 'w')
+        f2.writelines(str(ldelta0)+'\n')
+        f2.close()
+        # lasso weights
+        bw = res['combine']
+        regs = res['combine_reg']
+        ss = res['combine_ss']
+        fileName2 = '../toyData/K'+dataMode+'/lasso_' + mode
+        f1 = open(fileName2 + '.csv', 'w')
+        for wi in bw:
+            f1.writelines(str(wi) + '\n')
+        f1.close()
+        f0 = open(fileName2 + '.regularizerScore.txt', 'w')
+        for (ri, si) in zip(regs, ss):
+            f0.writelines(str(ri) + '\t' + str(si) + '\n')
+        f0.close()
+
 def run_AT(dataMode, seed):
     discoverNum = 50
     numintervals = 500
