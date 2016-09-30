@@ -51,7 +51,7 @@ def generateData(seed):
     error = np.random.normal(0, 1, n)
 
     C = np.dot(X, X.T)
-    C = centralize(C)
+    # C = centralize(C)
 
     Kva, Kve = np.linalg.eigh(C)
     np.savetxt('../syntheticData/Kva.csv', Kva, delimiter=',')
