@@ -125,7 +125,7 @@ def evaluateToy(n, roc):
         if test == 'single':
             for K in ['_linear' ,'_lmm', '_lmm2', '_lmmn']:
                 # print '-------------'
-                sig = np.loadtxt('../syntheticData/K'+n+'/'+test+K+'.csv', delimiter=',')
+                sig = np.loadtxt('../toyData/K'+n+'/'+test+K+'.csv', delimiter=',')
                 sig = 1-np.array(sig)
                 sig = np.nan_to_num(sig)
                 sigd = limitPrediction(sig, 50)
@@ -140,7 +140,7 @@ def evaluateToy(n, roc):
         else:
             for K in ['_linear' ,'_lmm', '_lmm2', '_lmmn']:
                 # print '-------------'
-                bw = np.loadtxt('../syntheticData/K'+n+'/'+test+K+'.csv', delimiter=',')
+                bw = np.loadtxt('../toyData/K'+n+'/'+test+K+'.csv', delimiter=',')
                 bw = np.abs(bw)
                 if roc:
                     fpr, tpr, f = roc_curve(label, bw)
