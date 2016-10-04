@@ -25,7 +25,7 @@ def generateData(seed):
 
     n = 100
     p = 1000
-    zp = 1000
+    zp = 10
     g = 5
     sig = 1
     sigC = 1
