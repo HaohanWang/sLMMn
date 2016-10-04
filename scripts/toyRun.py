@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.metrics import roc_curve, auc, precision_recall_curve
 
 from utility import dataLoader
-from evaluation.evaluation import evaluateSynthetic
+from evaluation.evaluation import evaluateToy
 
 def toyRunning():
     from utility.toyDataGeneration import generateData
@@ -23,7 +23,7 @@ def toyRunning():
                 run_toy(j)
             rs = []
             for j in range(4):
-                r = evaluateSynthetic(j, roc)
+                r = evaluateToy(j, roc)
                 rs.extend(r)
             rss.append(rs)
         except:
@@ -40,9 +40,9 @@ def toySingleRun(seed):
     for j in range(4):
         run_toy(j)
     for j in range(4):
-        r = evaluateSynthetic(j, roc)
+        r = evaluateToy(j, roc)
         print r
 
 
 if __name__ == '__main__':
-    toyRunning()
+    toySingleRun(0)
