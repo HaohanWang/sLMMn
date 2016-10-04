@@ -25,7 +25,7 @@ def generateData(seed):
 
     n = 100
     p = 1000
-    zp = 10
+    zp = 5
     g = 5
     sig = 1
     sigC = 1
@@ -47,8 +47,8 @@ def generateData(seed):
     Z = np.array(Z)
     print X.shape
 
-    X[X > -1] = 1
-    X[X <= -1] = 0
+    # X[X > -1] = 1
+    # X[X <= -1] = 0
 
     featureNum = int(p * dense)
     idx = scipy.random.randint(0, p, featureNum).astype(int)
