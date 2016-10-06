@@ -16,6 +16,11 @@ def normalize(x):
     s = np.sum(x)
     return x/s
 
+def mapping2ZeroOne(x):
+    maxi = np.max(x)
+    mini = np.min(x)
+    return (x-mini)/(maxi-mini)
+
 def central(x):
     m = np.mean(x)
     return x-m
@@ -179,6 +184,8 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         # S = normalize(normalize(np.power(S, 2)) + S)
         S = np.power(S, 2)*np.sign(S)
 
+    # S = mapping2ZeroOne(S)
+
     Uy = scipy.dot(U.T, y)
 
     # grid search
@@ -206,7 +213,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     else:
         Stmp = S
         sgn = np.sign(S)
-        kchoices = [0, 1, 2, 3, 4]
+        kchoices = [3, 4, 5]
         knum = len(kchoices)
         global_S = S
         global_ldeltaopt = scipy.inf
@@ -219,6 +226,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
                 Stmp = S
             else:
                 Stmp = np.power(np.abs(S), kc)*sgn
+            # Stmp = mapping2ZeroOne(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
             ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
@@ -308,7 +316,7 @@ def run_toy(dataMode):
     else:
         dataMode = 'n'
     for mode in ['linear', 'lmm', 'lmm2', 'lmmn']:
-        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-5, ldeltamax=5, discoverNum=discoverNum, mode=mode)
+        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-50, ldeltamax=50, discoverNum=discoverNum, mode=mode)
         print res['ldelta0'], res['monitor_nm']['nllopt']
         # hypothesis weights
         fileName1 = '../toyData/K'+dataMode+'/single_' + mode

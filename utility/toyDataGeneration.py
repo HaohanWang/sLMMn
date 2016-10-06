@@ -111,7 +111,7 @@ def generateData(seed):
     zp = 5
     g = 5
     sig = 1
-    sigC = 100
+    sigC = 1
 
     we = 0.01
 
@@ -152,7 +152,7 @@ def generateData(seed):
     causal = np.array(zip(idx, w))
     np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
 
-    # C = normalize(C)
+    C = normalize(C)
 
     y = we * error + normalize(ypheno)
     np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
@@ -163,7 +163,7 @@ def generateData(seed):
     np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
-    # C2 = normalize(C2)
+    C2 = normalize(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -173,7 +173,7 @@ def generateData(seed):
     Ct = C
     for i in range(n):
         C = np.dot(Ct, C)
-    # C = normalize(C)
+    C = normalize(C)
     yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
