@@ -184,7 +184,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         # S = normalize(normalize(np.power(S, 2)) + S)
         S = np.power(S, 2)*np.sign(S)
 
-    # S = mapping2ZeroOne(S)
+    S = mapping2ZeroOne(S)
 
     Uy = scipy.dot(U.T, y)
 
@@ -226,7 +226,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
                 Stmp = S
             else:
                 Stmp = np.power(np.abs(S), kc)*sgn
-            # Stmp = mapping2ZeroOne(Stmp)
+            Stmp = mapping2ZeroOne(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
             ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
