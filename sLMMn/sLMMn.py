@@ -177,7 +177,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
 
     if mode == 'lmm2':
         # S = normalize(normalize(np.power(S, 2)) + S)
-        S = np.power(S, 2)
+        S = np.power(S, 2)*np.sign(S)
 
     Uy = scipy.dot(U.T, y)
 
@@ -205,6 +205,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         monitor['nllopt'] = nllmin
     else:
         Stmp = S
+        sgn = np.sign(S)
         kchoices = [0, 1, 2, 3, 4]
         knum = len(kchoices)
         global_S = S
@@ -217,7 +218,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
             elif kc == 1:
                 Stmp = S
             else:
-                Stmp = np.power(S, kc)
+                Stmp = np.power(np.abs(S), kc)*sgn
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
             ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin

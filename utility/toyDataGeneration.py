@@ -56,7 +56,15 @@ def generateDataTest(seed):
     # C = centralize(C)
     # plt.imshow(C)
     # plt.show()
-    C = normalize(C)
+    Kva, Kve = np.linalg.eigh(C)
+    ind = xrange(Kva.shape[0])
+    plt.scatter(ind, normalize(Kva), color='r')
+    plt.scatter(ind, normalize(np.power(Kva, 2)), color='b')
+    plt.scatter(ind, normalize(np.power(Kva, 3)), color='m')
+    plt.show()
+
+    # C = normalize(C)
+
     causal = np.array(zip(idx, w))
     np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
 
@@ -69,7 +77,7 @@ def generateDataTest(seed):
     C2 = np.dot(C, C)
     # plt.imshow(C2)
     # plt.show()
-    C2 = normalize(C2)
+    # C2 = normalize(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -80,7 +88,7 @@ def generateDataTest(seed):
         C = np.dot(Ct, C)
     # plt.imshow(C)
     # plt.show()
-    C = normalize(C)
+    # C = normalize(C)
     yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
@@ -136,7 +144,6 @@ def generateData(seed):
 
     C = np.dot(Z, Z.T)
     # C = centralize(C)
-    C = normalize(C)
 
     Kva, Kve = np.linalg.eigh(C)
     np.savetxt('../toyData/Kva.csv', Kva, delimiter=',')
@@ -144,6 +151,8 @@ def generateData(seed):
     np.savetxt('../toyData/X.csv', X, delimiter=',')
     causal = np.array(zip(idx, w))
     np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
+
+    # C = normalize(C)
 
     y = we * error + normalize(ypheno)
     np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
@@ -154,7 +163,7 @@ def generateData(seed):
     np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
-    C2 = normalize(C2)
+    # C2 = normalize(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -164,7 +173,7 @@ def generateData(seed):
     Ct = C
     for i in range(n):
         C = np.dot(Ct, C)
-    C = normalize(C)
+    # C = normalize(C)
     yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)

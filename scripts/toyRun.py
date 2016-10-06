@@ -45,4 +45,4 @@ def toySingleRun(seed):
 
 
 if __name__ == '__main__':
-    toyRunning()
+    toySingleRun(1)
