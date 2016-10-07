@@ -8,7 +8,7 @@ from utility import dataLoader
 
 def limitPrediction(l, num):
     s = sorted(l)
-    t = s[-num]
+    t = s[-(num+1)]
     r = []
     for v in l:
         if v > t:

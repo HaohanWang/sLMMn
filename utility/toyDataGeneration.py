@@ -16,6 +16,12 @@ def mapping2ZeroOne(x):
     mini = np.min(x)
     return (x-mini)/(maxi-mini)
 
+def rescale(x):
+    maxi = np.max(np.abs(x))
+    if maxi == 0:
+        return x
+    return x/maxi
+
 def normalize(x):
     m = np.mean(x)
     s = np.std(x)
@@ -30,11 +36,11 @@ def generateData(seed, test=False):
     dense = 0.05
 
     n = 100
-    p1 = 500
-    p2 = 500
+    p1 = 1000
+    p2 = 9000
     g = 5
     sig = 1
-    sigC = 1
+    sigC = 1e5
 
     we = 0.01
 
@@ -58,7 +64,7 @@ def generateData(seed, test=False):
         plt.imshow(X)
         plt.show()
 
-    p = p1+ p2
+    p = p1
     featureNum = int(p * dense)
     idx = scipy.random.randint(0, p, featureNum).astype(int)
     idx = sorted(idx)
@@ -69,10 +75,11 @@ def generateData(seed, test=False):
     error = np.random.normal(0, 1, n)
 
     C = np.dot(Z, Z.T)
+    C1 = rescale(C)
     if test:
-        plt.imshow(C)
+        plt.imshow(C1)
         plt.show()
-        print C
+        print C1
 
     Kva, Kve = np.linalg.eigh(C)
     if test:
@@ -93,13 +100,14 @@ def generateData(seed, test=False):
     if not test:
         np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
 
-    yK1 = np.random.multivariate_normal(ypheno, sigC * C, size=1)
+    yK1 = np.random.multivariate_normal(ypheno, sigC * C1, size=1)
     yK1 = yK1.reshape(yK1.shape[1])
     yK1 = we * error + normalize(yK1)
     if not test:
         np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
+    C2 = rescale(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -110,14 +118,13 @@ def generateData(seed, test=False):
     if not test:
         np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
 
-    Ct = C
-    for i in range(3): # so that this is the fourth order of kinship matrix
-        C = np.dot(Ct, C)
+    C3 = np.dot(C2,C)
+    C3 = rescale(C3)
     if test:
-        plt.imshow(C)
+        plt.imshow(C3)
         plt.show()
-        print C
-    yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
+        print C3
+    yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
     if not test:
@@ -133,4 +140,4 @@ def generateData(seed, test=False):
 
 
 if __name__ == '__main__':
-    generateData(2, test=True)
+    generateData(0, test=True)
