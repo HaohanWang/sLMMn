@@ -30,32 +30,35 @@ def generateData(seed, test=False):
     dense = 0.05
 
     n = 100
-    p = 1000
-    zp = 5
+    p1 = 500
+    p2 = 500
     g = 5
     sig = 1
     sigC = 1
 
     we = 0.01
 
-    center = np.random.uniform(0, 1, [g, p])
-    center2 = np.random.uniform(0, 1, [g, zp])
+    center1 = np.random.normal(0, 1, [g, p1])
+    center2 = np.random.normal(0, 1, [g, p2])
     sample = n / g
     X = []
-    Z = []
 
     for i in range(g):
-        x = np.random.multivariate_normal(center[i, :], sig * np.diag(np.ones([p, ])), size=sample)
+        x1 = np.random.multivariate_normal(center1[i, :], sig * np.diag(np.ones([p1, ])), size=sample)
+        x2 = np.tile(center2[i,:], [sample, 1])
+        x = np.append(x1, x2, 1)
         X.extend(x)
-        for j in range(sample):
-            Z.append(center2[i])
     X = np.array(X)
-    Z = np.array(Z)
-    print X.shape
 
     X[X > -1] = 1
     X[X <= -1] = 0
+    Z = X
 
+    if test:
+        plt.imshow(X)
+        plt.show()
+
+    p = p1+ p2
     featureNum = int(p * dense)
     idx = scipy.random.randint(0, p, featureNum).astype(int)
     idx = sorted(idx)
@@ -69,13 +72,14 @@ def generateData(seed, test=False):
     if test:
         plt.imshow(C)
         plt.show()
+        print C
 
     Kva, Kve = np.linalg.eigh(C)
     if test:
-        ind = xrange(Kva.shape[0])
-        plt.scatter(ind, mapping2ZeroOne(Kva), color='r', marker='+')
-        plt.scatter(ind, mapping2ZeroOne(np.power(Kva, 2)), color='b', marker='+')
-        plt.scatter(ind, mapping2ZeroOne(np.power(Kva, 3)), color='m', marker='+')
+        ind = np.array(xrange(Kva.shape[0]))
+        plt.scatter(ind[:-1], mapping2ZeroOne(Kva[:-1]), color='y', marker='+')
+        plt.scatter(ind[:-1], mapping2ZeroOne(np.power(Kva, 2)[:-1]), color='b', marker='+')
+        plt.scatter(ind[:-1], mapping2ZeroOne(np.power(Kva, 4)[:-1]), color='m', marker='+')
         plt.show()
     if not test:
         np.savetxt('../toyData/Kva.csv', Kva, delimiter=',')
@@ -102,16 +106,17 @@ def generateData(seed, test=False):
     if test:
         plt.imshow(C2)
         plt.show()
+        print C2
     if not test:
         np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
 
-    n = np.random.randint(3, 4)
     Ct = C
-    for i in range(n):
+    for i in range(3): # so that this is the fourth order of kinship matrix
         C = np.dot(Ct, C)
     if test:
         plt.imshow(C)
         plt.show()
+        print C
     yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
@@ -121,11 +126,11 @@ def generateData(seed, test=False):
     if test:
         x = xrange(len(y))
         plt.scatter(x, y, color='g')
-        plt.scatter(x, yK1, color='r')
+        plt.scatter(x, yK1, color='y')
         plt.scatter(x, yK2, color='b')
         plt.scatter(x, yKn, color='m')
         plt.show()
 
 
 if __name__ == '__main__':
-    generateData(0, test=True)
+    generateData(2, test=True)

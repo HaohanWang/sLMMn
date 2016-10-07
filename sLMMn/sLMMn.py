@@ -19,6 +19,8 @@ def normalize(x):
 def mapping2ZeroOne(x):
     maxi = np.max(x)
     mini = np.min(x)
+    if maxi == mini:
+        return x/maxi
     return (x-mini)/(maxi-mini)
 
 def central(x):
@@ -76,7 +78,7 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
 
     w1 = hypothesisTest(SUX, SUy, X, SUX0, X0)
     regs = []
-    for i in range(5, 20):
+    for i in range(5, 30):
         for j in range(1, 10):
             regs.append(j*np.power(10.0, -i))
     breg, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regList=regs, SKlearn=True, selectK=True, K=discoverNum)
@@ -184,8 +186,6 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         # S = normalize(normalize(np.power(S, 2)) + S)
         S = np.power(S, 2)*np.sign(S)
 
-    S = mapping2ZeroOne(S)
-
     Uy = scipy.dot(U.T, y)
 
     # grid search
@@ -213,7 +213,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     else:
         Stmp = S
         sgn = np.sign(S)
-        kchoices = [3, 4, 5]
+        kchoices = [0, 1, 2, 3, 4, 5]
         knum = len(kchoices)
         global_S = S
         global_ldeltaopt = scipy.inf
@@ -226,7 +226,6 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
                 Stmp = S
             else:
                 Stmp = np.power(np.abs(S), kc)*sgn
-            Stmp = mapping2ZeroOne(Stmp)
             Uy = scipy.dot(U.T, y)
             nllgrid = scipy.ones(numintervals + 1) * scipy.inf
             ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
