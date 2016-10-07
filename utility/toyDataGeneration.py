@@ -11,97 +11,20 @@ def centralize(x):
     m = np.mean(x)
     return x - m
 
+def mapping2ZeroOne(x):
+    maxi = np.max(x)
+    mini = np.min(x)
+    return (x-mini)/(maxi-mini)
 
 def normalize(x):
     m = np.mean(x)
     s = np.std(x)
     return (x - m) / s
 
-def generateDataTest(seed):
-    from matplotlib import pyplot as plt
-    np.random.seed(seed)
-    dense = 0.05
-    n = 100
-    p = 1000
-    zp = 5
-    g = 5
-    sig = 1
-    sigC = 100
-    we = 0.01
-    center = np.random.uniform(0, 1, [g, p])
-    center2 = np.random.uniform(0, 1, [g, zp])
-    sample = n / g
-    X = []
-    Z = []
-    for i in range(g):
-        x = np.random.multivariate_normal(center[i, :], sig * np.diag(np.ones([p, ])), size=sample)
-        X.extend(x)
-        for j in range(sample):
-            Z.append(center2[i])
-    X = np.array(X)
-    Z = np.array(Z)
-    print X.shape
-    X[X > -1] = 1
-    X[X <= -1] = 0
-    featureNum = int(p * dense)
-    idx = scipy.random.randint(0, p, featureNum).astype(int)
-    idx = sorted(idx)
-    w = 1 * np.random.normal(0, 1, size=featureNum)
-    ypheno = scipy.dot(X[:, idx], w)
-    ypheno = (ypheno - ypheno.mean()) / ypheno.std()
-    ypheno = ypheno.reshape(ypheno.shape[0])
-    error = np.random.normal(0, 1, n)
-
-    C = np.dot(Z, Z.T)
-    # C = centralize(C)
-    # plt.imshow(C)
-    # plt.show()
-    Kva, Kve = np.linalg.eigh(C)
-    ind = xrange(Kva.shape[0])
-    plt.scatter(ind, normalize(Kva), color='r')
-    plt.scatter(ind, normalize(np.power(Kva, 2)), color='b')
-    plt.scatter(ind, normalize(np.power(Kva, 3)), color='m')
-    plt.show()
-
-    # C = normalize(C)
-
-    causal = np.array(zip(idx, w))
-    np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
-
-    y = we * error + normalize(ypheno)
-
-    yK1 = np.random.multivariate_normal(ypheno, sigC * C, size=1)
-    yK1 = yK1.reshape(yK1.shape[1])
-    yK1 = we * error + normalize(yK1)
-
-    C2 = np.dot(C, C)
-    # plt.imshow(C2)
-    # plt.show()
-    # C2 = normalize(C2)
-    yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
-    yK2 = yK2.reshape(yK2.shape[1])
-    yK2 = we * error + normalize(yK2)
-
-    n = np.random.randint(3, 4)
-    Ct = C
-    for i in range(n):
-        C = np.dot(Ct, C)
-    # plt.imshow(C)
-    # plt.show()
-    # C = normalize(C)
-    yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
-    yKn = yKn.reshape(yKn.shape[1])
-    yKn = we * error + normalize(yKn)
-
-    x = xrange(len(y))
-    plt.scatter(x, y, color='g')
-    plt.scatter(x, yK1, color='r')
-    plt.scatter(x, yK2, color='b')
-    plt.scatter(x, yKn, color='m')
-    plt.show()
-
-
-def generateData(seed):
+def generateData(seed, test=False):
+    plt = None
+    if test:
+        from matplotlib import pyplot as plt
     np.random.seed(seed)
 
     dense = 0.05
@@ -143,71 +66,66 @@ def generateData(seed):
     error = np.random.normal(0, 1, n)
 
     C = np.dot(Z, Z.T)
-    # C = centralize(C)
+    if test:
+        plt.imshow(C)
+        plt.show()
 
     Kva, Kve = np.linalg.eigh(C)
-    np.savetxt('../toyData/Kva.csv', Kva, delimiter=',')
-    np.savetxt('../toyData/Kve.csv', Kve, delimiter=',')
-    np.savetxt('../toyData/X.csv', X, delimiter=',')
+    if test:
+        ind = xrange(Kva.shape[0])
+        plt.scatter(ind, mapping2ZeroOne(Kva), color='r', marker='+')
+        plt.scatter(ind, mapping2ZeroOne(np.power(Kva, 2)), color='b', marker='+')
+        plt.scatter(ind, mapping2ZeroOne(np.power(Kva, 3)), color='m', marker='+')
+        plt.show()
+    if not test:
+        np.savetxt('../toyData/Kva.csv', Kva, delimiter=',')
+        np.savetxt('../toyData/Kve.csv', Kve, delimiter=',')
+        np.savetxt('../toyData/X.csv', X, delimiter=',')
     causal = np.array(zip(idx, w))
-    np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
-
-    C = normalize(C)
+    if not test:
+        np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
 
     y = we * error + normalize(ypheno)
-    np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
+    if not test:
+        np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
 
     yK1 = np.random.multivariate_normal(ypheno, sigC * C, size=1)
     yK1 = yK1.reshape(yK1.shape[1])
     yK1 = we * error + normalize(yK1)
-    np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
+    if not test:
+        np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
-    C2 = normalize(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
-    np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
+    if test:
+        plt.imshow(C2)
+        plt.show()
+    if not test:
+        np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
 
     n = np.random.randint(3, 4)
     Ct = C
     for i in range(n):
         C = np.dot(Ct, C)
-    C = normalize(C)
+    if test:
+        plt.imshow(C)
+        plt.show()
     yKn = np.random.multivariate_normal(ypheno, sigC * C, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
-    np.savetxt('../toyData/Kn/y.csv', yKn, '%5.2f', delimiter=',')
+    if not test:
+        np.savetxt('../toyData/Kn/y.csv', yKn, '%5.2f', delimiter=',')
 
-    # x = xrange(len(y))
-    # plt.scatter(x, y, color='g')
-    # plt.scatter(x, yK1, color='r')
-    # plt.scatter(x, yK2, color='b')
-    # plt.scatter(x, yKn, color='m')
-    # plt.show()
-    # print normalize(y)
-    # print normalize(yK1)
-    # print normalize(yK2)
-    # print normalize(yKn)
-
-    # Z = linkage(X, 'ward')
-    #
-    # from scipy.cluster.hierarchy import cophenet
-    # from scipy.spatial.distance import pdist
-    #
-    # c, coph_dists = cophenet(Z, pdist(X))
-    #
-    # plt.figure(figsize=(25, 10))
-    # plt.title('Hierarchical Clustering Dendrogram')
-    # plt.xlabel('sample index')
-    # plt.ylabel('distance')
-    # dendrogram(
-    #     Z,
-    #     leaf_rotation=90.,  # rotates the x axis labels
-    #     leaf_font_size=8.,  # font size for the x axis labels
-    # )
-    # plt.show()
+    if test:
+        x = xrange(len(y))
+        plt.scatter(x, y, color='g')
+        plt.scatter(x, yK1, color='r')
+        plt.scatter(x, yK2, color='b')
+        plt.scatter(x, yKn, color='m')
+        plt.show()
 
 
 if __name__ == '__main__':
-    generateDataTest(0)
+    generateData(0, test=True)
