@@ -44,4 +44,4 @@ def visualizeEigenValue():
 
 
 if __name__ == '__main__':
-    visualizeCovariance()
+    calculateCovariance()
