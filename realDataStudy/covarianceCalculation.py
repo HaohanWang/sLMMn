@@ -71,4 +71,4 @@ def visualizeYCovEigen():
 
 
 if __name__ == '__main__':
-    visualizeYCovEigen()
+    phenoCovariance()
