@@ -3,4 +3,5 @@
 *Data/*
 .idea*
 *.csv
+*/*.csv
 singleModelTest/
