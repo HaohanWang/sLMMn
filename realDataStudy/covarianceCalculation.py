@@ -22,6 +22,17 @@ def calculateCovariance():
     Ks.append(np.dot(K2, K))
     np.save('../ATData/Ks', Ks)
 
+def phenoCovariance():
+    path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+    y = np.loadtxt(path + 'athaliana2.phenos.csv', delimiter=',')
+    K = np.dot(y, y.T)
+    Ks = []
+    Ks.append(K)
+    K2 = np.dot(K, K)
+    Ks.append(K2)
+    Ks.append(np.dot(K2, K))
+    np.save('../ATData/yKs', Ks)
+
 
 def visualizeCovariance():
     from matplotlib import pyplot as plt
@@ -44,4 +55,4 @@ def visualizeEigenValue():
 
 
 if __name__ == '__main__':
-    calculateCovariance()
+    phenoCovariance()
