@@ -24,7 +24,7 @@ def calculateCovariance():
 
 def phenoCovariance():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    y = np.loadtxt(path + 'athaliana2.phenos.csv', delimiter=',')
+    y = np.nan_to_num(np.loadtxt(path + 'athaliana2.phenos.csv', delimiter=','))
     K = np.dot(y, y.T)
     Ks = []
     Ks.append(K)
@@ -53,6 +53,22 @@ def visualizeEigenValue():
     plt.scatter(x[:-1], rescale(np.power(S[:-1], 3)), color='m', marker='+')
     plt.show()
 
+def visualizeYCovEigen():
+    from matplotlib import pyplot as plt
+    Ks = np.load('../ATData/yKs.npy')
+    for K in Ks:
+        print K
+        K = rescale(K)
+        plt.imshow(K)
+        plt.show()
+    S, Kve = np.linalg.eigh(Ks[0])
+    x = np.array(xrange(S.shape[0]))
+    plt.scatter(x[:-1], rescale(S[:-1]), color='y', marker='+')
+    plt.scatter(x[:-1], rescale(np.power(S[:-1], 2)), color='b', marker='+')
+    plt.scatter(x[:-1], rescale(np.power(S[:-1], 3)), color='m', marker='+')
+    plt.show()
+
+
 
 if __name__ == '__main__':
-    phenoCovariance()
+    visualizeYCovEigen()
