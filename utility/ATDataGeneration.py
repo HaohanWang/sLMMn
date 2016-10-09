@@ -33,7 +33,6 @@ def generateData(seed, firstTime=False):
 
     if firstTime:
         C = np.dot(X, X.T)
-        C = centralize(C)
         Kva, Kve = np.linalg.eigh(C)
         np.savetxt('../ATData/Kva.csv', Kva, delimiter=',')
         np.savetxt('../ATData/Kve.csv', Kve, delimiter=',')

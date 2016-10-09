@@ -12,20 +12,8 @@ from helpingMethods import *
 
 from utility import dataLoader
 
-def normalize(x):
-    s = np.sum(x)
-    return x/s
+from utility.simpleFunctions import *
 
-def mapping2ZeroOne(x):
-    maxi = np.max(x)
-    mini = np.min(x)
-    if maxi == mini:
-        return x/maxi
-    return (x-mini)/(maxi-mini)
-
-def central(x):
-    m = np.mean(x)
-    return x-m
 
 def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50, mode='linear'):
     """
@@ -179,12 +167,16 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     ldeltamin += scale
     ldeltamax += scale
 
+    S = rescale(S)
+
     if S is None or U is None:
         S, U = linalg.eigh(K)
 
     if mode == 'lmm2':
         # S = normalize(normalize(np.power(S, 2)) + S)
         S = np.power(S, 2)*np.sign(S)
+    if mode == 'lmmn':
+        S = np.power(np.abs(S), 3)*np.sign(S)
 
     Uy = scipy.dot(U.T, y)
 
@@ -211,47 +203,67 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         monitor['ldeltaopt'] = ldeltaopt_glob
         monitor['nllopt'] = nllmin
     else:
-        Stmp = S
-        sgn = np.sign(S)
-        kchoices = [0, 1, 2, 3, 4, 5]
-        knum = len(kchoices)
-        global_S = S
-        global_ldeltaopt = scipy.inf
-        global_min = scipy.inf
-        for ki in range(knum):
-            kc = kchoices[ki]
-            if kc == 0:
-                Stmp = np.ones_like(S)
-            elif kc == 1:
-                Stmp = S
-            else:
-                Stmp = np.power(np.abs(S), kc)*sgn
-            Uy = scipy.dot(U.T, y)
-            nllgrid = scipy.ones(numintervals + 1) * scipy.inf
-            ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
-            nllmin = scipy.inf
-            for i in scipy.arange(numintervals + 1):
-                nllgrid[i] = nLLeval(ldeltagrid[i], Uy, Stmp)
-            nll_min = nllgrid.min()
-            ldeltaopt_glob = ldeltagrid[nllgrid.argmin()]
-            for i in scipy.arange(numintervals - 1) + 1:
-                if (nllgrid[i] < nllgrid[i - 1] and nllgrid[i] < nllgrid[i + 1]):
-                    ldeltaopt, nllopt, iter, funcalls = opt.brent(nLLeval, (Uy, Stmp),
-                                                                  (ldeltagrid[i - 1], ldeltagrid[i], ldeltagrid[i + 1]),
-                                                                  full_output=True)
-                    if nllopt < nllmin:
-                        nll_min = nllopt
-                        ldeltaopt_glob = ldeltaopt
-            # print kc, nll_min, ldeltaopt_glob
-            if nll_min < global_min:
-                global_min = nll_min
-                global_ldeltaopt = ldeltaopt_glob
-                global_S = np.copy(S)
-        ldeltaopt_glob = global_ldeltaopt
-        S = global_S
+        nllgrid = scipy.ones(numintervals + 1) * scipy.inf
+        ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
+        for i in scipy.arange(numintervals + 1):
+            nllgrid[i] = nLLeval(ldeltagrid[i], Uy, S)
+
+        nllmin = nllgrid.min()
+        ldeltaopt_glob = ldeltagrid[nllgrid.argmin()]
+
+        for i in scipy.arange(numintervals - 1) + 1:
+            if (nllgrid[i] < nllgrid[i - 1] and nllgrid[i] < nllgrid[i + 1]):
+                ldeltaopt, nllopt, iter, funcalls = opt.brent(nLLeval, (Uy, S),
+                                                              (ldeltagrid[i - 1], ldeltagrid[i], ldeltagrid[i + 1]),
+                                                              full_output=True)
+                if nllopt < nllmin:
+                    nllmin = nllopt
+                    ldeltaopt_glob = ldeltaopt
+
         monitor = {}
-        monitor['nllopt'] = global_min
         monitor['ldeltaopt'] = ldeltaopt_glob
+        monitor['nllopt'] = nllmin
+        # Stmp = S
+        # sgn = np.sign(S)
+        # kchoices = [0, 1, 2, 3, 4, 5]
+        # knum = len(kchoices)
+        # global_S = S
+        # global_ldeltaopt = scipy.inf
+        # global_min = scipy.inf
+        # for ki in range(knum):
+        #     kc = kchoices[ki]
+        #     if kc == 0:
+        #         Stmp = np.ones_like(S)
+        #     elif kc == 1:
+        #         Stmp = S
+        #     else:
+        #         Stmp = np.power(np.abs(S), kc)*sgn
+        #     Uy = scipy.dot(U.T, y)
+        #     nllgrid = scipy.ones(numintervals + 1) * scipy.inf
+        #     ldeltagrid = scipy.arange(numintervals + 1) / (numintervals * 1.0) * (ldeltamax - ldeltamin) + ldeltamin
+        #     nllmin = scipy.inf
+        #     for i in scipy.arange(numintervals + 1):
+        #         nllgrid[i] = nLLeval(ldeltagrid[i], Uy, Stmp)
+        #     nll_min = nllgrid.min()
+        #     ldeltaopt_glob = ldeltagrid[nllgrid.argmin()]
+        #     for i in scipy.arange(numintervals - 1) + 1:
+        #         if (nllgrid[i] < nllgrid[i - 1] and nllgrid[i] < nllgrid[i + 1]):
+        #             ldeltaopt, nllopt, iter, funcalls = opt.brent(nLLeval, (Uy, Stmp),
+        #                                                           (ldeltagrid[i - 1], ldeltagrid[i], ldeltagrid[i + 1]),
+        #                                                           full_output=True)
+        #             if nllopt < nllmin:
+        #                 nll_min = nllopt
+        #                 ldeltaopt_glob = ldeltaopt
+        #     # print kc, nll_min, ldeltaopt_glob
+        #     if nll_min < global_min:
+        #         global_min = nll_min
+        #         global_ldeltaopt = ldeltaopt_glob
+        #         global_S = np.copy(S)
+        # ldeltaopt_glob = global_ldeltaopt
+        # S = global_S
+        # monitor = {}
+        # monitor['nllopt'] = global_min
+        # monitor['ldeltaopt'] = ldeltaopt_glob
 
     return S, U, ldeltaopt_glob, monitor
 

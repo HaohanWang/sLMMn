@@ -1,31 +1,12 @@
 __author__ = 'Haohan Wang'
 
-import numpy as np
 import scipy
 # from matplotlib import pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 
+from utility.simpleFunctions import *
 
-def centralize(x):
-    m = np.mean(x)
-    return x - m
-
-def mapping2ZeroOne(x):
-    maxi = np.max(x)
-    mini = np.min(x)
-    return (x-mini)/(maxi-mini)
-
-def rescale(x):
-    maxi = np.max(np.abs(x))
-    if maxi == 0:
-        return x
-    return x/maxi
-
-def normalize(x):
-    m = np.mean(x)
-    s = np.std(x)
-    return (x - m) / s
 
 def generateData(seed, test=False):
     plt = None
@@ -36,11 +17,12 @@ def generateData(seed, test=False):
     dense = 0.05
 
     n = 100
-    p1 = 1000
-    p2 = 9000
+    p1 = 500
+    p2 = 9500
     g = 5
     sig = 1
     sigC = 1e5
+    p = 1000
 
     we = 0.01
 
@@ -64,7 +46,6 @@ def generateData(seed, test=False):
         plt.imshow(X)
         plt.show()
 
-    p = p1
     featureNum = int(p * dense)
     idx = scipy.random.randint(0, p, featureNum).astype(int)
     idx = sorted(idx)
@@ -140,4 +121,4 @@ def generateData(seed, test=False):
 
 
 if __name__ == '__main__':
-    generateData(0, test=True)
+    generateData(2, test=True)
