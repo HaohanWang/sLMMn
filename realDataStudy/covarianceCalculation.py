@@ -1,5 +1,8 @@
 __author__ = 'Haohan Wang'
 
+import sys
+sys.path.append('../')
+
 from utility.simpleFunctions import *
 
 def calculateCovariance():
