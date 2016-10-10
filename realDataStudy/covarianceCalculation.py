@@ -8,7 +8,7 @@ from utility.simpleFunctions import *
 
 def splitIntoChroms():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter=',')
+    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter='\t')
     X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
     for i in range(1, 6):
         snps = X[:, pos==i]
@@ -16,8 +16,8 @@ def splitIntoChroms():
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter='\t')
     X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
-    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter=',')
     X = X[:, pos==2]
     K = np.dot(X, X.T)
     Kva, Kve = np.linalg.eigh(K)
