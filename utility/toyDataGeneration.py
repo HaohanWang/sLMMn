@@ -17,9 +17,9 @@ def generateData(seed, test=False):
     dense = 0.05
 
     n = 100
-    p1 = 9000
-    p2 = 1000
-    g = 5
+    p1 = 900
+    p2 = 100
+    g = 20
     sig = 1
     sigC = 1e5
     p = 1000
@@ -118,6 +118,16 @@ def generateData(seed, test=False):
         plt.scatter(x, yK2, color='b')
         plt.scatter(x, yKn, color='m')
         plt.show()
+
+        def imshowY(y):
+            y = y.reshape(y.shape[0], 1)
+            plt.imshow(np.dot(y, y.T))
+            plt.show()
+
+        imshowY(y)
+        imshowY(yK1)
+        imshowY(yK2)
+        imshowY(yKn)
 
 
 if __name__ == '__main__':

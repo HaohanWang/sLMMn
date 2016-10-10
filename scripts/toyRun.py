@@ -14,7 +14,7 @@ def toyRunning():
     from sLMMn.sLMMn import run_toy
     roc = True
     rss = []
-    for i in range(20):
+    for i in range(100):
         print '======================'
         print 'seed:', i
         generateData(i)
@@ -30,7 +30,7 @@ def toyRunning():
             print 'Error'
         print '======================'
     print rss
-    np.savetxt('Toy_meta.csv', np.array(rss), delimiter=',')
+    np.savetxt('Toy_meta2.csv', np.array(rss), delimiter=',')
 
 def toySingleRun(seed):
     from utility.toyDataGeneration import generateData
