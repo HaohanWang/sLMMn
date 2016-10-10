@@ -17,9 +17,7 @@ def splitIntoChroms():
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter='\t')
-    X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
-    X = X[:, pos==2]
+    X = np.loadtxt(path + 'athaliana.snps.chrom2.csv', delimiter=',')
     K = np.dot(X, X.T)
     Kva, Kve = np.linalg.eigh(K)
     np.savetxt('../ATData/Kva.csv', Kva, delimiter=',')
@@ -81,10 +79,26 @@ def phenoCovariance_Alz():
     Ks.append(np.dot(K2, K))
     np.save('../AlzData/yKs', Ks)
 
+def reOrderK(Ks):
+    import scipy.cluster.hierarchy as hier
+    K = Ks[0]
+    Z = hier.linkage(K, 'ward')
+    l = hier.leaves_list(Z)
+    print l
+    nKs = []
+    for m in Ks:
+        nK = np.zeros_like(m)
+        for i in range(len(l)):
+            nK[i,:] = m[l[i],:]
+        nKs.append(nK.T)
+    return nKs
+
 
 def visualizeCovariance():
     from matplotlib import pyplot as plt
     Ks = np.load('../CancerData/Ks.npy')
+    Ks = reOrderK(Ks)
+    Ks = reOrderK(Ks)
     for K in Ks:
         K = rescale(K)
         print K
@@ -123,4 +137,4 @@ def visualize():
 
 
 if __name__ == '__main__':
-    splitIntoChroms()
+    calculateCovariance_AT()
