@@ -8,12 +8,12 @@ from utility.simpleFunctions import *
 
 def splitIntoChroms():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    text = [line.strip().split() for line in open(path+'athaliana.snps.chromPositionInfo.txt')]
+    text = [line.strip().split() for line in open(path+'athaliana2.snps.chromPositionInfo.txt')]
     pos = np.array([int(i) for i in text[0]])
-    X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
+    X = np.loadtxt(path + 'athaliana2.snps.csv', delimiter=',')
     for i in range(1, 6):
         snps = X[:, pos==i]
-        np.savetxt(path+'athaliana.snps.chrom'+str(i)+'.csv', snps, delimiter=',', fmt='%d')
+        np.savetxt(path+'athaliana2.snps.chrom'+str(i)+'.csv', snps, delimiter=',', fmt='%d')
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
@@ -96,7 +96,7 @@ def reOrderK(Ks):
 
 def visualizeCovariance():
     from matplotlib import pyplot as plt
-    Ks = np.load('../CancerData/Ks.npy')
+    Ks = np.load('../ATData/Ks.npy')
     Ks = reOrderK(Ks)
     Ks = reOrderK(Ks)
     for K in Ks:
@@ -108,7 +108,7 @@ def visualizeCovariance():
 
 def visualizeEigenValue():
     from matplotlib import pyplot as plt
-    S = np.loadtxt('../CancerData/Kva.csv', delimiter=',')
+    S = np.loadtxt('../ATData/Kva.csv', delimiter=',')
     x = np.array(xrange(S.shape[0]))
     plt.scatter(x[:-1], rescale(S[:-1]), color='y', marker='+')
     plt.scatter(x[:-1], rescale(np.power(S[:-1], 2)), color='b', marker='+')
@@ -117,7 +117,7 @@ def visualizeEigenValue():
 
 def visualizeYCovEigen():
     from matplotlib import pyplot as plt
-    Ks = np.load('../CancerData/yKs.npy')
+    Ks = np.load('../ATData/yKs.npy')
     for K in Ks:
         print K
         K = rescale(K)
@@ -137,4 +137,4 @@ def visualize():
 
 
 if __name__ == '__main__':
-    calculateCovariance_AT()
+    splitIntoChroms()
