@@ -9,7 +9,7 @@ from utility.simpleFunctions import *
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    X = np.loadtxt(path + 'athaliana.snps.csv', delimiter=',')
+    X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
     pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter=',')
     X = X[:, pos==2]
     K = np.dot(X, X.T)
