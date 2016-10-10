@@ -8,9 +8,9 @@ from utility.simpleFunctions import *
 
 def splitIntoChroms():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
     pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter=',')
-    for i in range(2, 6):
+    X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
+    for i in range(1, 6):
         snps = X[:, pos==i]
         np.savetxt(path+'athaliana.snps.chrom'+str(i)+'.csv', snps, delimiter=',', fmt='%d')
 
@@ -83,7 +83,7 @@ def phenoCovariance_Alz():
 
 def visualizeCovariance():
     from matplotlib import pyplot as plt
-    Ks = np.load('../AlzData/Ks.npy')
+    Ks = np.load('../CancerData/Ks.npy')
     for K in Ks:
         K = rescale(K)
         print K
@@ -93,7 +93,7 @@ def visualizeCovariance():
 
 def visualizeEigenValue():
     from matplotlib import pyplot as plt
-    S = np.loadtxt('../AlzData/Kva.csv', delimiter=',')
+    S = np.loadtxt('../CancerData/Kva.csv', delimiter=',')
     x = np.array(xrange(S.shape[0]))
     plt.scatter(x[:-1], rescale(S[:-1]), color='y', marker='+')
     plt.scatter(x[:-1], rescale(np.power(S[:-1], 2)), color='b', marker='+')
@@ -102,7 +102,7 @@ def visualizeEigenValue():
 
 def visualizeYCovEigen():
     from matplotlib import pyplot as plt
-    Ks = np.load('../AlzData/yKs.npy')
+    Ks = np.load('../CancerData/yKs.npy')
     for K in Ks:
         print K
         K = rescale(K)
