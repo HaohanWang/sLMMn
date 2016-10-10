@@ -50,7 +50,19 @@ def calculateCovariance_Alz():
 
 def phenoCovariance_Alz():
     path = '/home/haohanw/AlzheimerPreprocess/generateData/'
-    y = np.nan_to_num(np.loadtxt(path + 'traits.csv', delimiter=','))
+    text = [line.strip() for line in open(path + 'traits.csv')]
+    y = []
+    for line in text:
+        l = []
+        items = line.split(',')
+        for item in items:
+            try:
+                l.append(float(item))
+            except:
+                l.append(0)
+        y.append(l)
+    y = np.array(y)
+
     K = np.dot(y, y.T)
     Ks = []
     Ks.append(K)
@@ -97,5 +109,5 @@ def visualizeYCovEigen():
 
 
 if __name__ == '__main__':
-    calculateCovariance_Alz()
+    # calculateCovariance_Alz()
     phenoCovariance_Alz()
