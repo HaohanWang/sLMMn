@@ -6,6 +6,13 @@ sys.path.append('../')
 
 from utility.simpleFunctions import *
 
+def splitIntoChroms():
+    path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+    X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
+    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter=',')
+    for i in range(2, 6):
+        snps = X[:, pos==i]
+        np.savetxt(path+'athaliana.snps.chrom'+str(i)+'.csv', snps, delimiter=',', fmt='%d')
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
@@ -115,4 +122,4 @@ def visualize():
 
 
 if __name__ == '__main__':
-    calculateCovariance_AT()
+    splitIntoChroms()
