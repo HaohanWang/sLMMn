@@ -9,7 +9,9 @@ from utility.simpleFunctions import *
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    X = np.loadtxt(path + 'athaliana2.snps.csv', delimiter=',')
+    X = np.loadtxt(path + 'athaliana.snps.csv', delimiter=',')
+    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter=',')
+    X = X[:, pos==2]
     K = np.dot(X, X.T)
     Kva, Kve = np.linalg.eigh(K)
     np.savetxt('../ATData/Kva.csv', Kva, delimiter=',')
@@ -74,7 +76,7 @@ def phenoCovariance_Alz():
 
 def visualizeCovariance():
     from matplotlib import pyplot as plt
-    Ks = np.load('../ATData/Ks.npy')
+    Ks = np.load('../AlzData/Ks.npy')
     for K in Ks:
         K = rescale(K)
         print K
@@ -84,7 +86,7 @@ def visualizeCovariance():
 
 def visualizeEigenValue():
     from matplotlib import pyplot as plt
-    S = np.loadtxt('../ATData/Kva.csv', delimiter=',')
+    S = np.loadtxt('../AlzData/Kva.csv', delimiter=',')
     x = np.array(xrange(S.shape[0]))
     plt.scatter(x[:-1], rescale(S[:-1]), color='y', marker='+')
     plt.scatter(x[:-1], rescale(np.power(S[:-1], 2)), color='b', marker='+')
@@ -93,7 +95,7 @@ def visualizeEigenValue():
 
 def visualizeYCovEigen():
     from matplotlib import pyplot as plt
-    Ks = np.load('../ATData/yKs.npy')
+    Ks = np.load('../AlzData/yKs.npy')
     for K in Ks:
         print K
         K = rescale(K)
@@ -106,8 +108,11 @@ def visualizeYCovEigen():
     plt.scatter(x[:-1], rescale(np.power(S[:-1], 3)), color='m', marker='+')
     plt.show()
 
+def visualize():
+    visualizeCovariance()
+    visualizeEigenValue()
+    visualizeYCovEigen()
 
 
 if __name__ == '__main__':
-    # calculateCovariance_Alz()
-    phenoCovariance_Alz()
+    calculateCovariance_AT()
