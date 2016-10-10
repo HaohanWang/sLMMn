@@ -8,7 +8,8 @@ from utility.simpleFunctions import *
 
 def splitIntoChroms():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    pos = np.loadtxt(path+'athaliana.snps.chromPositionInfo.txt', delimiter='\t')
+    text = [line.strip().split() for line in open(path+'athaliana.snps.chromPositionInfo.txt')]
+    pos = np.array([int(i) for i in text[0]])
     X = np.loadtxt(path + 'athaliana.snps.all.csv', delimiter=',')
     for i in range(1, 6):
         snps = X[:, pos==i]
