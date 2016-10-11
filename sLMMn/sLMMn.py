@@ -64,13 +64,10 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
         monitor_nm['nllopt'] = 0
         SUX0 = None
 
+    regs = {'linear':(1e-5, 1e5), 'lmm':(1e-5, 1e5), 'lmm2':(1e-30, 1e30), 'lmmn':(1e-30, 1e30)}
+
     w1 = hypothesisTest(SUX, SUy, X, SUX0, X0)
-    regs = []
-    for i in range(25, 30):
-        for j in range(1, 10):
-            regs.append(j*np.power(10.0, -i))
-    breg, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regList=regs, SKlearn=True, selectK=True, K=discoverNum)
-    w2 = train_lasso(SUX, SUy, breg)
+    breg, w2, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regMin=regs[mode][0], regMax=regs[mode][1], K=discoverNum)
 
     time_end = time.time()
     time_diff = time_end - time_start
@@ -81,7 +78,6 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
     res['single'] = w1
     res['combine'] = w2
     res['combine_ss'] = ss
-    res['combine_reg'] = regs
     res['time'] = time_diff
     res['monitor_nm'] = monitor_nm
     return res
@@ -268,23 +264,31 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     return S, U, ldeltaopt_glob, monitor
 
 
-def cv_train(X, Y, regList, SKlearn=True, selectK=False, K=100):
-    ss = []
-    b = np.inf
+def cv_train(X, Y, regMin=1e-30, regMax=1.0, K=100):
+    betaM = None
     breg = 0
-    for reg in regList:
+    iteration = 0
+    patience = 100
+    ss = []
+    while regMin < regMax and iteration < patience:
+        iteration += 1
+        reg = (regMin+regMax) / 2.0
+        # print("Iter:{}\tlambda:{}".format(iteration, lmbd), end="\t")
         clf = Lasso(alpha=reg)
         clf.fit(X, Y)
         k = len(np.where(clf.coef_ != 0)[0])
-        if k>K:
-            s = np.abs(k - K)
+        print reg, k
+        ss.append((reg, k))
+        if k < K:   # Regularizer too strong
+            regMax = reg
+        elif k > K: # Regularizer too weak
+            regMin = reg
+            betaM = clf.coef_
         else:
-            s = np.inf
-        ss.append(s)
-        if s < b:
-            b = s
-            breg = reg
-    return breg, ss
+            betaM = clf.coef_
+            break
+
+    return breg, betaM, ss
 
 def run_synthetic(dataMode):
     discoverNum = 50
@@ -377,7 +381,6 @@ def run_AT(dataMode, seed):
         f2.close()
         # lasso weights
         bw = res['combine']
-        regs = res['combine_reg']
         ss = res['combine_ss']
         fileName2 = '../ATData/K'+dataMode+'/lasso_' + mode
         f1 = open(fileName2 + '_'+seed+'.csv', 'w')
@@ -385,7 +388,7 @@ def run_AT(dataMode, seed):
             f1.writelines(str(wi) + '\n')
         f1.close()
         f0 = open(fileName2 + '.regularizerScore_'+seed+'.txt', 'w')
-        for (ri, si) in zip(regs, ss):
+        for (ri, si) in ss:
             f0.writelines(str(ri) + '\t' + str(si) + '\n')
         f0.close()
 
