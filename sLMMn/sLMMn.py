@@ -278,7 +278,7 @@ def cv_train(X, Y, regMin=1e-30, regMax=1.0, K=100):
         clf = Lasso(alpha=reg)
         clf.fit(X, Y)
         k = len(np.where(clf.coef_ != 0)[0])
-        print reg, k
+        # print reg, k
         ss.append((reg, k))
         if k < K:   # Regularizer too strong
             regMax = reg
@@ -360,7 +360,7 @@ def run_toy(dataMode):
         f0.close()
 
 def run_AT(dataMode, seed):
-    discoverNum = 500
+    discoverNum = 100
     numintervals = 500
     snps, K, Kva, Kve, = dataLoader.load_data_AT_basic()
     Y, causal = dataLoader.load_data_AT_pheno(dataMode, seed)

@@ -33,7 +33,7 @@ def evaluateAT(n, roc, seed, pos):
                 sig = np.loadtxt('../ATData/K'+n+'/'+test+K+'_'+seed+'.csv', delimiter=',')
                 sig = 1-np.array(sig)
                 sig = np.nan_to_num(sig)
-                sigd = limitPrediction(sig, 500)
+                sigd = limitPrediction(sig, 100)
                 if roc:
                     fpr, tpr = gwas_roc(sigd, causal[:,0], positions=pos)
                     # print auc(fpr, tpr)
@@ -168,7 +168,7 @@ def getNearbyIndex(k, positions, nearby):
         maxi += 1
     return mini, maxi
 
-def gwas_precision_recall(weights, causal_snps, positions=None, nearby=1000):
+def gwas_precision_recall(weights, causal_snps, positions=None, nearby=1e5):
     score = np.array(weights)
     label = np.zeros(len(weights))
     if positions is None:
@@ -201,7 +201,7 @@ def gwas_nonZero(learnt_weights):
     ind = np.where(learnt_weights!=0)
     return len(ind[0])
 
-def gwas_roc(weights, causal_snps, positions=None, nearby=1e6):
+def gwas_roc(weights, causal_snps, positions=None, nearby=1e5):
     score = np.array(weights)
     label = np.zeros(len(weights))
     if positions is None:
