@@ -33,27 +33,28 @@ def evaluateAT(n, roc, seed, pos):
                 sig = np.loadtxt('../ATData/K'+n+'/'+test+K+'_'+seed+'.csv', delimiter=',')
                 sig = 1-np.array(sig)
                 sig = np.nan_to_num(sig)
-                sigd = limitPrediction(sig, 50)
+                sigd = limitPrediction(sig, 100)
                 if roc:
                     fpr, tpr = gwas_roc(sigd, causal[:,0], positions=pos)
-                    print auc(fpr, tpr)
+                    # print auc(fpr, tpr)
                     l.append(auc(fpr, tpr))
                 else:
                     pr, re = gwas_precision_recall(sigd, causal[:,0], positions=pos)
-                    print auc(re, pr)
+                    # print auc(re, pr)
                     l.append(auc(re, pr))
         else:
             for K in ['_linear' ,'_lmm', '_lmm2', '_lmmn']:
                 # print '-------------'
                 bw = np.loadtxt('../ATData/K'+n+'/'+test+K+'_'+seed+'.csv', delimiter=',')
                 bw = np.abs(bw)
+                bw = limitPrediction(bw, 100)
                 if roc:
                     fpr, tpr = gwas_roc(bw, causal[:,0], positions=pos)
-                    print auc(fpr, tpr)
+                    # print auc(fpr, tpr)
                     l.append(auc(fpr, tpr))
                 else:
                     pr, re = gwas_precision_recall(bw, causal[:,0], positions=pos)
-                    print auc(re, pr)
+                    # print auc(re, pr)
                     l.append(auc(re, pr))
     return l
 

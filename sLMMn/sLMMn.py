@@ -276,7 +276,10 @@ def cv_train(X, Y, regList, SKlearn=True, selectK=False, K=100):
         clf = Lasso(alpha=reg)
         clf.fit(X, Y)
         k = len(np.where(clf.coef_ != 0)[0])
-        s = np.abs(k - K)
+        if k>K:
+            s = np.abs(k - K)
+        else:
+            s = np.inf
         ss.append(s)
         if s < b:
             b = s
