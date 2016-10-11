@@ -359,7 +359,7 @@ def run_toy(dataMode):
         f0.close()
 
 def run_AT(dataMode, seed):
-    discoverNum = 100
+    discoverNum = 500
     numintervals = 500
     snps, K, Kva, Kve, = dataLoader.load_data_AT_basic()
     Y, causal = dataLoader.load_data_AT_pheno(dataMode, seed)
