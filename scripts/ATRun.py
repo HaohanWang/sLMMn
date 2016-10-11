@@ -39,7 +39,7 @@ def ATRunningSingle(seed):
     from utility.ATDataGeneration import generateData
     from sLMMn.sLMMn import run_AT
     from evaluation.evaluation import evaluateAT
-    # generateData(seed)
+    generateData(seed)
     roc = True
     text = [line.strip() for line in open('../ATData/athaliana.snps.chromPositionInfo.txt')]
     chrom = [int(k) for k in text[0].split()]
@@ -49,8 +49,8 @@ def ATRunningSingle(seed):
         if chrom[i] == 5:
             pos.append(pos_tmp[i])
 
-    # for j in range(4):
-    #     run_AT(j, seed)
+    for j in range(4):
+        run_AT(j, seed)
     for j in range(4):
         r = evaluateAT(j, roc, seed, pos)
         print r
