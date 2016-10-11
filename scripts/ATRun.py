@@ -10,7 +10,7 @@ def ATRunning():
     from sLMMn.sLMMn import run_AT
     from evaluation.evaluation import evaluateAT
     # get position information
-    text = [line.strip() for line in open('../ATData/athaliana.snps.chromPositionInfo.txt')]
+    text = [line.strip() for line in open('../ATData/athaliana2.snps.chromPositionInfo.txt')]
     chrom = [int(k) for k in text[0].split()]
     pos_tmp = [int(k) for k in text[1].split()]
     pos = []
@@ -41,7 +41,7 @@ def ATRunningSingle(seed):
     from evaluation.evaluation import evaluateAT
     generateData(seed)
     roc = True
-    text = [line.strip() for line in open('../ATData/athaliana.snps.chromPositionInfo.txt')]
+    text = [line.strip() for line in open('../ATData/athaliana2.snps.chromPositionInfo.txt')]
     chrom = [int(k) for k in text[0].split()]
     pos_tmp = [int(k) for k in text[1].split()]
     pos = []
