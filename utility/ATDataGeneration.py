@@ -1,10 +1,13 @@
 __author__ = 'Haohan Wang'
 
+import sys
+sys.path.append('../')
+
 import numpy as np
 import scipy
 
-# path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-path = '../ATData/'
+path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+# path = '../ATData/'
 
 from utility.simpleFunctions import *
 
@@ -110,4 +113,4 @@ def generateData(seed, firstTime=False, test=False):
         imshowY(yKn)
 
 if __name__ == '__main__':
-    generateData(0, True, T)
+    generateData(0, True, False)
