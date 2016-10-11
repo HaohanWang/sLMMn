@@ -21,3 +21,12 @@ def normalize(x):
     m = np.mean(x)
     s = np.std(x)
     return (x - m) / s
+
+def reOrder(K):
+    import scipy.cluster.hierarchy as hier
+    Z = hier.linkage(K, 'ward')
+    l = hier.leaves_list(Z)
+    nK = np.zeros_like(K)
+    for i in range(len(l)):
+        nK[i,:] = K[l[i],:]
+    return nK

@@ -17,7 +17,7 @@ def splitIntoChroms():
 
 def calculateCovariance_AT():
     path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-    X = np.loadtxt(path + 'athaliana2.snps.chrom1.csv', delimiter=',')
+    X = np.loadtxt(path + 'athaliana2.snps.chrom1.csv', delimiter=',')  # seems 5 is better
     K = np.dot(X, X.T)
     Kva, Kve = np.linalg.eigh(K)
     np.savetxt('../ATData/Kva.csv', Kva, delimiter=',')
@@ -137,4 +137,4 @@ def visualize():
 
 
 if __name__ == '__main__':
-    calculateCovariance_AT()
+    visualize()
