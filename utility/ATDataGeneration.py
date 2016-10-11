@@ -6,8 +6,8 @@ sys.path.append('../')
 import numpy as np
 import scipy
 
-path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
-# path = '../ATData/'
+# path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+path = '../ATData/'
 
 from utility.simpleFunctions import *
 
@@ -18,12 +18,12 @@ def generateData(seed, firstTime=False, test=False):
     np.random.seed(seed)
 
     featureNum = 100
-    we = 0.1
-    sigC = 1
+    we = 0.01
+    sigC = 1e5
 
     X = np.loadtxt(path + 'athaliana2.snps.chrom5.csv', delimiter=',')
     [n, p] = X.shape
-    # X = reOrder(X)
+    X = reOrder(X)
 
     idx = scipy.random.randint(0, p, featureNum).astype(int)
     idx = sorted(idx)
@@ -44,10 +44,10 @@ def generateData(seed, firstTime=False, test=False):
         Kva = np.loadtxt('../ATData/Kva.csv', delimiter=',')
 
     C1 = rescale(C)
-    if test:
-        plt.imshow(C1)
-        print C1
-        plt.show()
+    # if test:
+    #     plt.imshow(C1)
+    #     print C1
+    #     plt.show()
 
     if test:
         ind = np.array(xrange(Kva.shape[0]))
@@ -58,41 +58,41 @@ def generateData(seed, firstTime=False, test=False):
 
     causal = np.array(zip(idx, w))
     if not test:
-        np.savetxt('../ATData/causal.csv', causal, '%5.2f', delimiter=',')
+        np.savetxt('../ATData/causal_'+str(seed)+'.csv', causal, '%5.2f', delimiter=',')
 
     y = we * error + normalize(ypheno)
     if not test:
-        np.savetxt('../ATData/K0/y.csv', y, '%5.2f', delimiter=',')
+        np.savetxt('../ATData/K0/y_'+str(seed)+'.csv', y, '%5.2f', delimiter=',')
 
     yK1 = np.random.multivariate_normal(ypheno, sigC * C1, size=1)
     yK1 = yK1.reshape(yK1.shape[1])
     yK1 = we * error + normalize(yK1)
     if not test:
-        np.savetxt('../ATData/K1/y.csv', yK1, '%5.2f', delimiter=',')
+        np.savetxt('../ATData/K1/y_'+str(seed)+'.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
     C2 = rescale(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
-    if test:
-        plt.imshow(C2)
-        plt.show()
-        print C2
+    # if test:
+    #     plt.imshow(C2)
+    #     plt.show()
+    #     print C2
     if not test:
-        np.savetxt('../ATData/K2/y.csv', yK2, '%5.2f', delimiter=',')
+        np.savetxt('../ATData/K2/y_'+str(seed)+'.csv', yK2, '%5.2f', delimiter=',')
 
     C3 = np.dot(C2,C)
     C3 = rescale(C3)
-    if test:
-        plt.imshow(C3)
-        plt.show()
-        print C3
+    # if test:
+    #     plt.imshow(C3)
+    #     plt.show()
+    #     print C3
     yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
     if not test:
-        np.savetxt('../ATData/Kn/y.csv', yKn, '%5.2f', delimiter=',')
+        np.savetxt('../ATData/Kn/y_'+str(seed)+'.csv', yKn, '%5.2f', delimiter=',')
 
     if test:
         x = xrange(len(y))
@@ -102,15 +102,15 @@ def generateData(seed, firstTime=False, test=False):
         plt.scatter(x, yKn, color='m')
         plt.show()
 
-        def imshowY(y):
-            y = y.reshape(y.shape[0], 1)
-            plt.imshow(np.dot(y, y.T))
-            plt.show()
-
-        imshowY(y)
-        imshowY(yK1)
-        imshowY(yK2)
-        imshowY(yKn)
+        # def imshowY(y):
+        #     y = y.reshape(y.shape[0], 1)
+        #     plt.imshow(np.dot(y, y.T))
+        #     plt.show()
+        #
+        # imshowY(y)
+        # imshowY(yK1)
+        # imshowY(yK2)
+        # imshowY(yKn)
 
 if __name__ == '__main__':
-    generateData(0, True, False)
+    generateData(0, False, True)

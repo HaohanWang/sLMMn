@@ -17,18 +17,13 @@ def limitPrediction(l, num):
             r.append(0)
     return r
 
-def evaluateAT(n, roc, seed):
-    text = [line.strip() for line in open('../ATData/athaliana.snps.chromPositionInfo.txt')][1]
-    pos = text.split()
-    pos = [int(k) for k in pos]
+def evaluateAT(n, roc, seed, pos):
     Y, causal = dataLoader.load_data_AT_pheno(n, seed)
     if n < 3:
         n = str(n)
     else:
         n = 'n'
     seed = str(seed)
-    # label = np.zeros(len(pos))
-    # label[causal[:,0].astype(int)] = 1
     l = []
     for test in ['single', 'lasso']:
         # print '+++++++++++++'
@@ -41,11 +36,11 @@ def evaluateAT(n, roc, seed):
                 sigd = limitPrediction(sig, 50)
                 if roc:
                     fpr, tpr = gwas_roc(sigd, causal[:,0], positions=pos)
-                    # print auc(fpr, tpr)
+                    print auc(fpr, tpr)
                     l.append(auc(fpr, tpr))
                 else:
                     pr, re = gwas_precision_recall(sigd, causal[:,0], positions=pos)
-                    # print auc(re, pr)
+                    print auc(re, pr)
                     l.append(auc(re, pr))
         else:
             for K in ['_linear' ,'_lmm', '_lmm2', '_lmmn']:
@@ -54,11 +49,11 @@ def evaluateAT(n, roc, seed):
                 bw = np.abs(bw)
                 if roc:
                     fpr, tpr = gwas_roc(bw, causal[:,0], positions=pos)
-                    # print auc(fpr, tpr)
+                    print auc(fpr, tpr)
                     l.append(auc(fpr, tpr))
                 else:
                     pr, re = gwas_precision_recall(bw, causal[:,0], positions=pos)
-                    # print auc(re, pr)
+                    print auc(re, pr)
                     l.append(auc(re, pr))
     return l
 

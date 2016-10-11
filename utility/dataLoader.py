@@ -1,7 +1,8 @@
 import numpy as np
 from scipy import linalg
 
-path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+# path = '/home/haohanw/FaSTLMM_K2_Sparsity/data/'
+path = '../ATData/'
 
 def load_data_synthetic(n):
     if n == 3:
@@ -30,7 +31,7 @@ def load_data_toy(n):
 
 
 def load_data_AT_basic():
-    X = np.loadtxt(path + 'athaliana.snps.chrom1.csv', delimiter=',')
+    X = np.loadtxt(path + 'athaliana2.snps.chrom5.csv', delimiter=',')
     K = np.loadtxt('../ATData/K.csv', delimiter=',')
     Kva = np.loadtxt('../ATData/Kva.csv', delimiter=',')
     Kve = np.loadtxt('../ATData/Kve.csv', delimiter=',')

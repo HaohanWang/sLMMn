@@ -66,7 +66,7 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
 
     w1 = hypothesisTest(SUX, SUy, X, SUX0, X0)
     regs = []
-    for i in range(5, 30):
+    for i in range(25, 30):
         for j in range(1, 10):
             regs.append(j*np.power(10.0, -i))
     breg, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regList=regs, SKlearn=True, selectK=True, K=discoverNum)
@@ -352,7 +352,7 @@ def run_toy(dataMode):
         f0.close()
 
 def run_AT(dataMode, seed):
-    discoverNum = 50
+    discoverNum = 100
     numintervals = 500
     snps, K, Kva, Kve, = dataLoader.load_data_AT_basic()
     Y, causal = dataLoader.load_data_AT_pheno(dataMode, seed)
@@ -362,7 +362,7 @@ def run_AT(dataMode, seed):
         dataMode = 'n'
     seed = str(seed)
     for mode in ['linear', 'lmm', 'lmm2', 'lmmn']:
-        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-5, ldeltamax=5, discoverNum=discoverNum, mode=mode)
+        res = train(X = snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-50, ldeltamax=50, discoverNum=discoverNum, mode=mode)
         print res['ldelta0'], res['monitor_nm']['nllopt']
         # hypothesis weights
         fileName1 = '../ATData/K'+dataMode+'/single_' + mode
