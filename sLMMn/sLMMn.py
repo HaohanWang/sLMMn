@@ -270,9 +270,10 @@ def cv_train(X, Y, regMin=1e-30, regMax=1.0, K=100):
     iteration = 0
     patience = 100
     ss = []
+
     while regMin < regMax and iteration < patience:
         iteration += 1
-        reg = (regMin+regMax) / 2.0
+        reg = np.exp((np.log(regMin)+np.log(regMax)) / 2.0)
         # print("Iter:{}\tlambda:{}".format(iteration, lmbd), end="\t")
         clf = Lasso(alpha=reg)
         clf.fit(X, Y)
