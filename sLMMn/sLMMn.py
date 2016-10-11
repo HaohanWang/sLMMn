@@ -64,7 +64,7 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
         monitor_nm['nllopt'] = 0
         SUX0 = None
 
-    regs = {'linear':(1e-5, 1e5), 'lmm':(1e-5, 1e5), 'lmm2':(1e-30, 1e30), 'lmmn':(1e-30, 1e30)}
+    regs = {'linear':(1e-15, 1e5), 'lmm':(1e-15, 1e5), 'lmm2':(1e-30, 1e30), 'lmmn':(1e-30, 1e30)}
 
     w1 = hypothesisTest(SUX, SUy, X, SUX0, X0)
     breg, w2, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regMin=regs[mode][0], regMax=regs[mode][1], K=discoverNum)
