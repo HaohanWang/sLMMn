@@ -150,7 +150,7 @@ def evaluateToy(n, roc):
 
 
 def getPositions(l):
-    text = [line.strip() for line in open('../ATData/athaliana.snps.chromPositionInfo.txt')][1]
+    text = [line.strip() for line in open('../ATData/athaliana2.snps.chromPositionInfo.txt')][1]
     # print 'This position information is only for AT'
     pos = text.split()[:l]
     pos = [int(k) for k in pos]
