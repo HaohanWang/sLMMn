@@ -18,8 +18,8 @@ def generateData(seed, firstTime=False, test=False):
     np.random.seed(seed)
 
     featureNum = 100
-    we = 0.01
-    sigC = 1e5
+    we = 0
+    sigC = 1
 
     X = np.loadtxt(path + 'athaliana2.snps.chrom5.csv', delimiter=',')
     [n, p] = X.shape
@@ -44,6 +44,7 @@ def generateData(seed, firstTime=False, test=False):
         Kva = np.loadtxt('../ATData/Kva.csv', delimiter=',')
 
     C1 = rescale(C)
+    C1 = C
     # if test:
     #     plt.imshow(C1)
     #     print C1
@@ -71,7 +72,7 @@ def generateData(seed, firstTime=False, test=False):
         np.savetxt('../ATData/K1/y_'+str(seed)+'.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
-    C2 = rescale(C2)
+    # C2 = rescale(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -83,7 +84,7 @@ def generateData(seed, firstTime=False, test=False):
         np.savetxt('../ATData/K2/y_'+str(seed)+'.csv', yK2, '%5.2f', delimiter=',')
 
     C3 = np.dot(C2,C)
-    C3 = rescale(C3)
+    # C3 = rescale(C3)
     # if test:
     #     plt.imshow(C3)
     #     plt.show()
