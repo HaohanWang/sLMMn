@@ -14,7 +14,7 @@ def toyRunning():
     from sLMMn.sLMMn import run_toy
     roc = True
     rss = []
-    for i in range(100):
+    for i in range(20):
         print '======================'
         print 'seed:', i
         generateData(i)
@@ -45,4 +45,4 @@ def toySingleRun(seed):
 
 
 if __name__ == '__main__':
-    toyRunning()
+    toySingleRun(0)

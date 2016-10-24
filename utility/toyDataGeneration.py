@@ -14,33 +14,42 @@ def generateData(seed, test=False):
         from matplotlib import pyplot as plt
     np.random.seed(seed)
 
-    dense = 0.05
+    dense = 0.01
 
-    n = 100
-    p1 = 100
-    p2 = 900
-    g = 50
+    n = 1000
+    p1 = 1000
+    p2 = 10
+    g = 5
     sig = 1
-    sigC = 1e5
-    p = 1000
+    sigC = 1
+    p = p1
 
-    we = 0.01
+    we = 0.
 
     center1 = np.random.normal(0, 1, [g, p1])
     center2 = np.random.normal(0, 1, [g, p2])
     sample = n / g
     X = []
+    Z = []
 
     for i in range(g):
-        x1 = np.random.multivariate_normal(center1[i, :], sig * np.diag(np.ones([p1, ])), size=sample)
-        x2 = np.tile(center2[i,:], [sample, 1])
-        x = np.append(x1, x2, 1)
+        x = np.random.multivariate_normal(center1[i, :], sig * np.diag(np.ones([p1, ])), size=sample)
         X.extend(x)
+        for j in range(sample):
+            Z.append(center2[i,:])
     X = np.array(X)
+
+    # for i in range(g):
+    #     z = np.random.multivariate_normal(center2[i, :], sig * np.diag(np.ones([p2, ])), size=sample)
+    #     Z.extend(z)
+    Z = np.array(Z)
+
+
 
     X[X > -1] = 1
     X[X <= -1] = 0
-    Z = X
+    # Z[Z > -1] = 1
+    # Z[Z <= -1] = 0
 
     if test:
         plt.imshow(X)
@@ -56,7 +65,8 @@ def generateData(seed, test=False):
     error = np.random.normal(0, 1, n)
 
     C = np.dot(Z, Z.T)
-    C1 = rescale(C)
+    C1 = C
+    C1 = rescale(C1)
     if test:
         plt.imshow(C1)
         plt.show()
@@ -66,8 +76,11 @@ def generateData(seed, test=False):
     if test:
         ind = np.array(xrange(Kva.shape[0]))
         plt.scatter(ind[:-1], mapping2ZeroOne(Kva[:-1]), color='y', marker='+')
+        print Kva
         plt.scatter(ind[:-1], mapping2ZeroOne(np.power(Kva, 2)[:-1]), color='b', marker='+')
+        print np.power(Kva, 2)
         plt.scatter(ind[:-1], mapping2ZeroOne(np.power(Kva, 4)[:-1]), color='m', marker='+')
+        print np.power(Kva, 4)
         plt.show()
     if not test:
         np.savetxt('../toyData/Kva.csv', Kva, delimiter=',')
@@ -80,7 +93,6 @@ def generateData(seed, test=False):
     y = we * error + normalize(ypheno)
     if not test:
         np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
-
     yK1 = np.random.multivariate_normal(ypheno, sigC * C1, size=1)
     yK1 = yK1.reshape(yK1.shape[1])
     yK1 = we * error + normalize(yK1)
@@ -99,15 +111,15 @@ def generateData(seed, test=False):
     if not test:
         np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
 
-    C3 = np.dot(C2,C)
+    C3 = np.dot(np.dot(C, C),np.dot(C, C))
     C3 = rescale(C3)
+    yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
+    yKn = yKn.reshape(yKn.shape[1])
+    yKn = we * error + normalize(yKn)
     if test:
         plt.imshow(C3)
         plt.show()
         print C3
-    yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
-    yKn = yKn.reshape(yKn.shape[1])
-    yKn = we * error + normalize(yKn)
     if not test:
         np.savetxt('../toyData/Kn/y.csv', yKn, '%5.2f', delimiter=',')
 
@@ -128,6 +140,9 @@ def generateData(seed, test=False):
         imshowY(yK1)
         imshowY(yK2)
         imshowY(yKn)
+
+        np.savetxt('tmp_c2.csv', C2, delimiter=',')
+        np.savetxt('tmp_c3.csv', C3, delimiter=',')
 
 
 if __name__ == '__main__':

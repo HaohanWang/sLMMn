@@ -172,7 +172,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         # S = normalize(normalize(np.power(S, 2)) + S)
         S = np.power(S, 2)*np.sign(S)
     if mode == 'lmmn':
-        S = np.power(np.abs(S), 3)*np.sign(S)
+        S = np.power(np.abs(S), 4)*np.sign(S)
 
     Uy = scipy.dot(U.T, y)
 
@@ -327,7 +327,7 @@ def run_synthetic(dataMode):
 
 def run_toy(dataMode):
     discoverNum = 50
-    numintervals = 500
+    numintervals = 5000
     snps, Y, Kva, Kve, causal = dataLoader.load_data_toy(dataMode)
     K = np.dot(snps, snps.T)
     if dataMode < 3:
@@ -347,7 +347,6 @@ def run_toy(dataMode):
         f2.close()
         # lasso weights
         bw = res['combine']
-        regs = res['combine_reg']
         ss = res['combine_ss']
         fileName2 = '../toyData/K'+dataMode+'/lasso_' + mode
         f1 = open(fileName2 + '.csv', 'w')
@@ -355,7 +354,7 @@ def run_toy(dataMode):
             f1.writelines(str(wi) + '\n')
         f1.close()
         f0 = open(fileName2 + '.regularizerScore.txt', 'w')
-        for (ri, si) in zip(regs, ss):
+        for (ri, si) in ss:
             f0.writelines(str(ri) + '\t' + str(si) + '\n')
         f0.close()
 

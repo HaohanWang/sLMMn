@@ -22,6 +22,11 @@ def normalize(x):
     s = np.std(x)
     return (x - m) / s
 
+def discretize(X):
+    X[X>0.9] = 1
+    X[X<0.9] = 1e-3
+    return X
+
 def reOrder(K):
     import scipy.cluster.hierarchy as hier
     Z = hier.linkage(K, 'ward')

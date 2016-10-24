@@ -138,6 +138,7 @@ def evaluateToy(n, roc):
                 # print '-------------'
                 bw = np.loadtxt('../toyData/K'+n+'/'+test+K+'.csv', delimiter=',')
                 bw = np.abs(bw)
+                bw = limitPrediction(bw, 50)
                 if roc:
                     fpr, tpr, f = roc_curve(label, bw)
                     # print auc(fpr, tpr)
