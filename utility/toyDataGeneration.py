@@ -66,25 +66,24 @@ def generateData(seed, test=False):
 
     C = np.dot(Z, Z.T)
     C1 = C
-    # C1 = rescale(C1)
     if test:
         plt.imshow(C1)
         plt.show()
         print C1
 
-    Kva, Kve = np.linalg.eigh(C)
+    S, K = np.linalg.eigh(C)
     if test:
-        ind = np.array(xrange(Kva.shape[0]))
-        plt.scatter(ind[:-1], mapping2ZeroOne(Kva[:-1]), color='y', marker='+')
-        print Kva
-        plt.scatter(ind[:-1], mapping2ZeroOne(np.power(Kva, 2)[:-1]), color='b', marker='+')
-        print np.power(Kva, 2)
-        plt.scatter(ind[:-1], mapping2ZeroOne(np.power(Kva, 4)[:-1]), color='m', marker='+')
-        print np.power(Kva, 4)
+        ind = np.array(xrange(S.shape[0]))
+        plt.scatter(ind[:-1], mapping2ZeroOne(S[:-1]), color='y', marker='+')
+        print S
+        plt.scatter(ind[:-1], mapping2ZeroOne(np.power(S, 2)[:-1]), color='b', marker='+')
+        print np.power(S, 2)
+        plt.scatter(ind[:-1], mapping2ZeroOne(np.power(S, 4)[:-1]), color='m', marker='+')
+        print np.power(S, 4)
         plt.show()
     if not test:
-        np.savetxt('../toyData/Kva.csv', Kva, delimiter=',')
-        np.savetxt('../toyData/Kve.csv', Kve, delimiter=',')
+        np.savetxt('../toyData/Kva.csv', S, delimiter=',')
+        np.savetxt('../toyData/Kve.csv', K, delimiter=',')
         np.savetxt('../toyData/X.csv', X, delimiter=',')
     causal = np.array(zip(idx, w))
     if not test:
@@ -100,7 +99,6 @@ def generateData(seed, test=False):
         np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
-    # C2 = rescale(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -112,7 +110,6 @@ def generateData(seed, test=False):
         np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
 
     C3 = np.dot(np.dot(C, C),np.dot(C, C))
-    # C3 = rescale(C3)
     yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)

@@ -163,8 +163,6 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
     ldeltamin += scale
     ldeltamax += scale
 
-    S = rescale(S)
-
     if S is None or U is None:
         S, U = linalg.eigh(K)
 
@@ -172,7 +170,7 @@ def train_nullmodel(y, K, S=None, U=None, numintervals=500, ldeltamin=-5, ldelta
         # S = normalize(normalize(np.power(S, 2)) + S)
         S = np.power(S, 2)*np.sign(S)
     if mode == 'lmmn':
-        S = np.power(np.abs(S), 4)*np.sign(S)
+        S = np.power(S, 4)*np.sign(S)
 
     Uy = scipy.dot(U.T, y)
 
