@@ -30,7 +30,7 @@ def toyRunning():
             print 'Error'
         print '======================'
     print rss
-    np.savetxt('Toy_meta2.csv', np.array(rss), delimiter=',')
+    np.savetxt('Toy_meta.csv', np.array(rss), delimiter=',')
 
 def toySingleRun(seed):
     from utility.toyDataGeneration import generateData
@@ -45,4 +45,4 @@ def toySingleRun(seed):
 
 
 if __name__ == '__main__':
-    toySingleRun(0)
+    toyRunning()

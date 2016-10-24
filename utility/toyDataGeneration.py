@@ -66,7 +66,7 @@ def generateData(seed, test=False):
 
     C = np.dot(Z, Z.T)
     C1 = C
-    C1 = rescale(C1)
+    # C1 = rescale(C1)
     if test:
         plt.imshow(C1)
         plt.show()
@@ -100,7 +100,7 @@ def generateData(seed, test=False):
         np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
-    C2 = rescale(C2)
+    # C2 = rescale(C2)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
     yK2 = we * error + normalize(yK2)
@@ -112,7 +112,7 @@ def generateData(seed, test=False):
         np.savetxt('../toyData/K2/y.csv', yK2, '%5.2f', delimiter=',')
 
     C3 = np.dot(np.dot(C, C),np.dot(C, C))
-    C3 = rescale(C3)
+    # C3 = rescale(C3)
     yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
     yKn = yKn.reshape(yKn.shape[1])
     yKn = we * error + normalize(yKn)
