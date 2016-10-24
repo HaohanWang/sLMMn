@@ -7,6 +7,7 @@ from sklearn.cluster import KMeans
 
 from utility.simpleFunctions import *
 
+epsilon = 1e-8
 
 def generateData(seed, test=False):
     plt = None
@@ -72,6 +73,7 @@ def generateData(seed, test=False):
         print C1
 
     S, K = np.linalg.eigh(C)
+    S[S<epsilon] = 0
     if test:
         ind = np.array(xrange(S.shape[0]))
         plt.scatter(ind[:-1], mapping2ZeroOne(S[:-1]), color='y', marker='+')
@@ -89,19 +91,19 @@ def generateData(seed, test=False):
     if not test:
         np.savetxt('../toyData/causal.csv', causal, '%5.2f', delimiter=',')
 
-    y = we * error + normalize(ypheno)
+    y = we * error + ypheno
     if not test:
         np.savetxt('../toyData/K0/y.csv', y, '%5.2f', delimiter=',')
     yK1 = np.random.multivariate_normal(ypheno, sigC * C1, size=1)
     yK1 = yK1.reshape(yK1.shape[1])
-    yK1 = we * error + normalize(yK1)
+    yK1 = we * error + yK1
     if not test:
         np.savetxt('../toyData/K1/y.csv', yK1, '%5.2f', delimiter=',')
 
     C2 = np.dot(C, C)
     yK2 = np.random.multivariate_normal(ypheno, sigC * C2, size=1)
     yK2 = yK2.reshape(yK2.shape[1])
-    yK2 = we * error + normalize(yK2)
+    yK2 = we * error + yK2
     if test:
         plt.imshow(C2)
         plt.show()
@@ -112,7 +114,7 @@ def generateData(seed, test=False):
     C3 = np.dot(np.dot(C, C),np.dot(C, C))
     yKn = np.random.multivariate_normal(ypheno, sigC * C3, size=1)
     yKn = yKn.reshape(yKn.shape[1])
-    yKn = we * error + normalize(yKn)
+    yKn = we * error + yKn
     if test:
         plt.imshow(C3)
         plt.show()
