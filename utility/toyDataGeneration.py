@@ -17,7 +17,7 @@ def generateData(seed, test=False):
 
     dense = 0.01
 
-    n = 1000
+    n = 100
     p1 = 1000
     p2 = 10
     g = 5
