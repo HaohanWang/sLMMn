@@ -1,0 +1,186 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1926144	Aacs	acetoacetyl-CoA synthetase	5		cellular response to glucose stimulus			ISO	RGD:708522 	J:155856 	
+MGI:2661081	Acvr1c	activin A receptor, type IC	2		response to glucose			IMP	MGI:3512292 	J:136342 	
+MGI:87912	Acvr2b	activin receptor IIB	9		response to glucose	has the participant blood|has the participant plasma		IGI	MGI:108051 	J:125512 	
+MGI:99673	Adcy5	adenylate cyclase 5	16		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	O95622 	J:164563 	
+MGI:106675	Adipoq	adiponectin, C1Q and collagen domain containing	16		response to glucose			IDA		J:77479 	
+MGI:106675	Adipoq	adiponectin, C1Q and collagen domain containing	16		response to glucose			IMP	MGI:2387344 	J:77479 	
+MGI:106675	Adipoq	adiponectin, C1Q and collagen domain containing	16		response to glucose			IMP	MGI:2384094 	J:77876 	
+MGI:87934	Adra2a	adrenergic receptor, alpha 2a	19		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:2056 	J:155856 	
+MGI:87934	Adra2a	adrenergic receptor, alpha 2a	19		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	P08913 	J:164563 	
+MGI:104984	Ang2	angiogenin, ribonuclease A family, member 2	14		cellular response to glucose stimulus			IDA		J:126723 	
+MGI:2142149	Ano1	anoctamin 1, calcium activated chloride channel	7		positive regulation of insulin secretion involved in cellular response to glucose stimulus	happens in type B pancreatic cell		IMP		J:221546 	
+MGI:2142149	Ano1	anoctamin 1, calcium activated chloride channel	7		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q5XXA6 	J:164563 	
+MGI:88050	Apoa2	apolipoprotein A-II	1		response to glucose			ISO	P02652 	J:164563 	
+MGI:88055	Apoc3	apolipoprotein C-III	9		cellular response to glucose stimulus			ISO	RGD:2136 	J:155856 	
+MGI:107387	Aqp4	aquaporin 4	18		cellular response to glucose stimulus			ISO	RGD:2143 	J:155856 	
+MGI:99473	Arrb1	arrestin, beta 1	7		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:160042 	
+MGI:1921494	Atg7	autophagy related 7	6		positive regulation of insulin secretion involved in cellular response to glucose stimulus	happens in type B pancreatic cell,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:3587769 	J:205147 	
+MGI:1096330	Bad	BCL2-associated agonist of cell death	19		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:133563 	
+MGI:1203517	Birc5	baculoviral IAP repeat-containing 5	11		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in pancreas		IMP	MGI:3046203 	J:151770 	
+MGI:1923020	Brsk2	BR serine/threonine kinase 2	7		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:190410 	
+MGI:1923020	Brsk2	BR serine/threonine kinase 2	7		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q8IWQ3 	J:164563 	
+MGI:1919014	C2cd2l	C2 calcium-dependent domain containing 2-like	9		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:202839 	
+MGI:106217	Cacna1e	calcium channel, voltage-dependent, R type, alpha 1E subunit	1		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:3526823 	J:95377 J:95636 	
+MGI:107739	Casp3	caspase 3	8		response to glucose			ISO	RGD:2275 	J:155856 	
+MGI:1312921	Casp6	caspase 6	3		response to glucose			ISO	RGD:70967 	J:155856 	
+MGI:97516	Cdk16	cyclin-dependent kinase 16	X		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:190410 	
+MGI:97516	Cdk16	cyclin-dependent kinase 16	X		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q00536 	J:164563 	
+MGI:88388	Cftr	cystic fibrosis transmembrane conductance regulator	6		positive regulation of insulin secretion involved in cellular response to glucose stimulus	happens in type B pancreatic cell		IMP		J:221546 	
+MGI:88388	Cftr	cystic fibrosis transmembrane conductance regulator	6		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	P13569 	J:164563 	
+MGI:88496	Crh	corticotropin releasing hormone	3		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:620505 	J:155856 	
+MGI:894312	Crhr2	corticotropin releasing hormone receptor 2	6		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:70547 	J:155856 	
+MGI:106091	Cyp7a1	cytochrome P450, family 7, subfamily a, polypeptide 1	4		cellular response to glucose stimulus			ISO	P22680 	J:164563 	
+MGI:107444	Efna5	ephrin A5	17		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:177156 	
+MGI:95295	Egr1	early growth response 1	18		response to glucose			IDA		J:154844 	
+MGI:2384802	Eif2b1	eukaryotic translation initiation factor 2B, subunit 1 (alpha)	5		response to glucose			ISO	RGD:620819 	J:155856 	
+MGI:2145118	Eif2b2	eukaryotic translation initiation factor 2B, subunit 2 beta	12		response to glucose			ISO	RGD:620820 	J:155856 	
+MGI:1313286	Eif2b3	eukaryotic translation initiation factor 2B, subunit 3	4		response to glucose			ISO	RGD:620821 	J:155856 	
+MGI:95300	Eif2b4	eukaryotic translation initiation factor 2B, subunit 4 delta	5		response to glucose			ISO	RGD:620208 	J:155856 	
+MGI:2446176	Eif2b5	eukaryotic translation initiation factor 2B, subunit 5 epsilon	16		response to glucose			ISO	RGD:708380 	J:155856 	
+MGI:1919286	Eny2	enhancer of yellow 2 homolog (Drosophila)	15		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1596439 	J:155856 	
+MGI:1276116	Ep300	E1A binding protein p300	15		response to glucose			ISO	RGD:620036 	J:155856 	
+MGI:99654	Epha5	Eph receptor A5	5		regulation of insulin secretion involved in cellular response to glucose stimulus			IDA		J:177156 	
+MGI:1930134	Ern1	endoplasmic reticulum (ER) to nucleus signalling 1	11		cellular response to glucose stimulus			ISO	O75460 	J:164563 	
+MGI:1914639	Fam132a	family with sequence similarity 132, member A	4		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IDA		J:183116 	
+MGI:1336205	Fkbp1b	FK506 binding protein 1b	12		negative regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans		IMP	MGI:2182644 	J:156630 	
+MGI:1336205	Fkbp1b	FK506 binding protein 1b	12		response to glucose			IMP	MGI:3720261 MGI:3796253 	J:136192 	
+MGI:1347476	Foxa2	forkhead box A2	2		negative regulation of detection of glucose			IDA		J:175106 	
+MGI:1347476	Foxa2	forkhead box A2	2		regulation of insulin secretion involved in cellular response to glucose stimulus			IDA		J:175106 	
+MGI:95660	Gas6	growth arrest specific 6	8		cellular response to glucose stimulus			ISO	RGD:61913 	J:155856 	
+MGI:95674	Gcg	glucagon	2		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IDA		J:160042 	
+MGI:1270854	Gck	glucokinase	11		detection of glucose			ISO	RGD:2670 	J:155856 	
+MGI:1270854	Gck	glucokinase	11		detection of glucose			ISO	P35557 	J:164563 	
+MGI:2384150	Gjd3	gap junction protein, delta 3	11		response to glucose			ISO	RGD:1308942 	J:155856 	
+MGI:99571	Glp1r	glucagon-like peptide 1 receptor	17		response to glucose			ISO	RGD:2703 	J:155856 	
+MGI:95739	Glul	glutamate-ammonia ligase (glutamine synthetase)	1		response to glucose	has the participant cerebral cortex		IMP	MGI:2180159 	J:128716 	
+MGI:109162	Gpam	glycerol-3-phosphate acyltransferase, mitochondrial	19		response to glucose			IMP	MGI:2669956 	J:106957 J:129839 	
+MGI:1924104	Gper1	G protein-coupled estrogen receptor 1	5		cellular response to glucose stimulus			IDA		J:174852 	
+MGI:106604	Gpld1	glycosylphosphatidylinositol specific phospholipase D1	13		positive regulation of insulin secretion involved in cellular response to glucose stimulus	happens in type B pancreatic cell		IDA		J:190286 	
+MGI:106604	Gpld1	glycosylphosphatidylinositol specific phospholipase D1	13		response to glucose			ISO	P80108 	J:164563 	
+MGI:1202299	Gpr27	G protein-coupled receptor 27	6		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:181489 	
+MGI:1918361	Gpr39	G protein-coupled receptor 39	1		positive regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:3701833 	J:158062 	
+MGI:2441763	Gpr68	G protein-coupled receptor 68	12		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP	MGI:5445001 	J:189192 	
+MGI:104887	Gpx1	glutathione peroxidase 1	9		cellular response to glucose stimulus			ISO	RGD:2729 	J:155856 	
+MGI:2385254	Gys2	glycogen synthase 2	6		response to glucose			ISO	RGD:2773 	J:155856 	
+MGI:106918	Hif1a	hypoxia inducible factor 1, alpha subunit	12		positive regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:2677892 	J:161456 	
+MGI:96159	Hmgcr	3-hydroxy-3-methylglutaryl-Coenzyme A reductase	13		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:2803 	J:155856 	
+MGI:2138069	Hmgn3	high mobility group nucleosomal binding domain 3	9		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:4366465 	J:153774 	
+MGI:98504	Hnf1a	HNF1 homeobox A	5		response to glucose			IMP	MGI:2384429 	J:50287 	
+MGI:98505	Hnf1b	HNF1 homeobox B	11		response to glucose			IMP	MGI:2176227 MGI:2670936 	J:91534 	
+MGI:109128	Hnf4a	hepatic nuclear factor 4, alpha	2		response to glucose			IMP		J:97364 	
+MGI:109128	Hnf4a	hepatic nuclear factor 4, alpha	2		response to glucose			ISO	RGD:2810 	J:155856 	
+MGI:96392	Icam1	intercellular adhesion molecule 1	9		cellular response to glucose stimulus			IDA		J:126723 	
+MGI:96432	Igf1	insulin-like growth factor 1	10		cellular response to glucose stimulus			IDA		J:186813 	
+MGI:96433	Igf1r	insulin-like growth factor I receptor	7		cellular response to glucose stimulus			IMP	MGI:2386329 	J:186813 	
+MGI:1196370	Ildr2	immunoglobulin-like domain containing receptor 2	1		response to glucose			IMP	MGI:3820395 	J:138216 	
+MGI:109334	Irs2	insulin receptor substrate 2	8		response to glucose			IDA		J:161023 	
+MGI:1915017	Jagn1	jagunal homolog 1	6		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1565488 	J:155856 	
+MGI:96666	Kcnb1	potassium voltage gated channel, Shab-related subfamily, member 1	2		cellular response to glucose stimulus			IDA		J:129963 	
+MGI:1096353	Khk	ketohexokinase	5		response to glucose			ISO	RGD:2966 	J:155856 	
+MGI:1098268	Kif5b	kinesin family member 5B	18		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:621559 	J:155856 	
+MGI:104993	Lepr	leptin receptor	4		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:3001 	J:155856 	
+MGI:1278315	Lrp5	low density lipoprotein receptor-related protein 5	19		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:2448955 	J:81174 	
+MGI:2673307	Mafa	v-maf musculoaponeurotic fibrosarcoma oncogene family, protein A (avian)	15		response to glucose			ISO	Q8NHW3 	J:164563 	
+MGI:1349394	Map4k4	mitogen-activated protein kinase kinase kinase kinase 4	1		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1305322 	J:155856 	
+MGI:2676902	Mir27a	microRNA 27a	8		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:2676816	Mir130a	microRNA 130a	2		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:2676816	Mir130a	microRNA 130a	2		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:162513 	
+MGI:2676856	Mir192	microRNA 192	19		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:2676874	Mir200a	microRNA 200a	4		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:2676874	Mir200a	microRNA 200a	4		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:162513 	
+MGI:3619332	Mir320	microRNA 320	14		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:3619351	Mir337	microRNA 337	12		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:3619374	Mir369	microRNA 369	12		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:3619386	Mir379	microRNA 379	12		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:3619398	Mir410	microRNA 410	12		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:3619398	Mir410	microRNA 410	12		regulation of insulin secretion involved in cellular response to glucose stimulus			IDA		J:162513 	
+MGI:3619398	Mir410	microRNA 410	12		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:162513 	
+MGI:3629950	Mir532	microRNA 532	X		cellular response to glucose stimulus			IDA		J:162513 	
+MGI:1927999	Mlxipl	MLX interacting protein-like	5		cellular response to glucose stimulus			ISO	RGD:620400 	J:155856 	
+MGI:1927999	Mlxipl	MLX interacting protein-like	5		glucose mediated signaling pathway			IDA		J:161104 	
+MGI:1927999	Mlxipl	MLX interacting protein-like	5		response to glucose			ISO	RGD:620400 	J:155856 	
+MGI:1917706	Mpc2	mitochondrial pyruvate carrier 2	1		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP	MGI:5635078 	J:211781 	
+MGI:97233	Mup1	major urinary protein 1	4		negative regulation of insulin secretion involved in cellular response to glucose stimulus			IDA		J:150507 	
+MGI:1100535	Myt1	myelin transcription factor 1	2		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:127471 	
+MGI:97284	Ncf2	neutrophil cytosolic factor 2	1		response to glucose			ISO	RGD:1309424 	J:155856 	
+MGI:1922847	Ndufaf2	NADH dehydrogenase (ubiquinone) 1 alpha subcomplex, assembly factor 2	13		negative regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:192991 	
+MGI:1339708	Neurod1	neurogenic differentiation 1	2		cellular response to glucose stimulus			ISO	RGD:3165 	J:155856 	
+MGI:1339708	Neurod1	neurogenic differentiation 1	2		response to glucose			ISO	Q13562 	J:164563 	
+MGI:104716	Nnat	neuronatin	2		response to glucose			IMP		J:105207 	
+MGI:1346344	Nr0b2	nuclear receptor subfamily 0, group B, member 2	4		response to glucose			ISO	RGD:621032 	J:155856 	
+MGI:2444210	Nr1d1	nuclear receptor subfamily 1, group D, member 1	11		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:181732 	
+MGI:1352464	Nr1h4	nuclear receptor subfamily 1, group H, member 4	10		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:161322 	
+MGI:1352464	Nr1h4	nuclear receptor subfamily 1, group H, member 4	10		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q96RI1 	J:164563 	
+MGI:1096391	Nrxn1	neurexin I	17		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans	PR:Q9CS84-1	IMP	MGI:3042794 	J:182555 	
+MGI:1339639	Ogt	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)	X		cellular response to glucose stimulus			ISO	RGD:62060 	J:155856 	
+MGI:1914291	Oxct1	3-oxoacid CoA transferase 1	15		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1584008 	J:155856 	
+MGI:1355296	Park2	Parkinson disease (autosomal recessive, juvenile) 2, parkin	17		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:61797 	J:155856 	
+MGI:97486	Pax2	paired box 2	19		cellular response to glucose stimulus			IMP		J:173747 	
+MGI:2384308	Pdk3	pyruvate dehydrogenase kinase, isoenzyme 3	X		cellular response to glucose stimulus			ISO	RGD:1593276 	J:155856 	
+MGI:102851	Pdx1	pancreatic and duodenal homeobox 1	5		detection of glucose			ISO	RGD:62387 	J:155856 	
+MGI:102851	Pdx1	pancreatic and duodenal homeobox 1	5		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:181489 	
+MGI:102851	Pdx1	pancreatic and duodenal homeobox 1	5		response to glucose			ISO	RGD:62387 	J:155856 	
+MGI:107815	Pfkfb2	6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 2	1		response to glucose			ISO	RGD:3309 	J:155856 	
+MGI:97547	Pfkl	phosphofructokinase, liver, B-type	10		response to glucose			IDA		J:42576 	
+MGI:97547	Pfkl	phosphofructokinase, liver, B-type	10		response to glucose			ISO	P17858 	J:164563 	
+MGI:1922704	Phpt1	phosphohistidine phosphatase 1	2		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1311355 	J:155856 	
+MGI:1916095	Pih1d1	PIH1 domain containing 1	7		positive regulation of glucose mediated signaling pathway			ISO	Q9NWS0 	J:164563 	
+MGI:1206581	Pik3ca	phosphatidylinositol 3-kinase, catalytic, alpha polypeptide	3		cellular response to glucose stimulus			IMP	MGI:4845856 	J:213164 	
+MGI:1355297	Pim3	proviral integration site 3	15		negative regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:177239 	
+MGI:1859152	Pla2g6	phospholipase A2, group VI	15		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:628867 	J:155856 	
+MGI:1321159	Ppp2ca	protein phosphatase 2 (formerly 2A), catalytic subunit, alpha isoform	11		cellular response to glucose stimulus			ISO	RGD:3380 	J:155856 	
+MGI:107164	Ppp3ca	protein phosphatase 3, catalytic subunit, alpha isoform	3		cellular response to glucose stimulus			ISO	RGD:3382 	J:155856 	
+MGI:107163	Ppp3cb	protein phosphatase 3, catalytic subunit, beta isoform	14		positive regulation of insulin secretion involved in cellular response to glucose stimulus	happens in type B pancreatic cell		IMP		J:180489 	
+MGI:107163	Ppp3cb	protein phosphatase 3, catalytic subunit, beta isoform	14		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:3383 	J:155856 	
+MGI:97592	Prkaca	protein kinase, cAMP dependent, catalytic, alpha	8		cellular response to glucose stimulus			ISO	P17612 	J:164563 	
+MGI:97599	Prkce	protein kinase C, epsilon	17		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP	MGI:2680163 	J:154424 	
+MGI:3644668	Prlh	prolactin releasing hormone	1		response to glucose			IMP	MGI:3832409 	J:144729 	
+MGI:102765	Ptprn	protein tyrosine phosphatase, receptor type, N	1		insulin secretion involved in cellular response to glucose stimulus			IMP		J:108765 J:174841 	
+MGI:107418	Ptprn2	protein tyrosine phosphatase, receptor type, N polypeptide 2	12		insulin secretion involved in cellular response to glucose stimulus			IMP		J:174841 	
+MGI:99425	Rab11b	RAB11B, member RAS oncogene family	17		insulin secretion involved in cellular response to glucose stimulus			IMP		J:151013 	
+MGI:1922248	Rab11fip2	RAB11 family interacting protein 2 (class I)	19		insulin secretion involved in cellular response to glucose stimulus			IMP		J:151013 	
+MGI:1098586	Rab11fip5	RAB11 family interacting protein 5 (class I)	6		insulin secretion involved in cellular response to glucose stimulus			IMP		J:151013 	
+MGI:104606	Rab34	RAB34, member RAS oncogene family	11		cellular response to glucose stimulus			ISO	RGD:1305058 	J:155856 	
+MGI:101849	Rack1	receptor for activated C kinase 1	11		cellular response to glucose stimulus			ISO	P63244 	J:164563 	
+MGI:97847	Raf1	v-raf-leukemia viral oncogene 1	6		insulin secretion involved in cellular response to glucose stimulus			IMP	MGI:3497907 	J:180723 	
+MGI:1100865	Rbm4	RNA binding motif protein 4	19		insulin secretion involved in cellular response to glucose stimulus			IMP	MGI:5467987 MGI:5467988 	J:192831 	
+MGI:2445208	Rfx6	regulatory factor X, 6	10		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q8HWS3 	J:164563 	
+MGI:1921636	Rmi1	RecQ mediated genome instability 1	13		response to glucose			IMP	MGI:4936755 	J:168271 	
+MGI:2136419	Sarm1	sterile alpha and HEAT/Armadillo motif containing 1	11		response to glucose	has the participant hippocampus,has the participant neuron		IMP	MGI:3765956 	J:126083 	
+MGI:1916477	Selenot	selenoprotein T	3		insulin secretion involved in cellular response to glucose stimulus			IMP	MGI:5544732 	J:203279 	
+MGI:1916477	Selenot	selenoprotein T	3		response to glucose			IMP	MGI:5544732 	J:203279 	
+MGI:2651874	Sesn2	sestrin 2	4		response to glucose			IGI	MGI:104663 MGI:1922997 	J:189021 	
+MGI:2651874	Sesn2	sestrin 2	4		response to glucose			IMP	MGI:3587950 	J:189021 	
+MGI:2446134	Sidt2	SID1 transmembrane family, member 2	9		regulation of insulin secretion involved in cellular response to glucose stimulus			IMP	MGI:5532825 	J:204228 	
+MGI:2446134	Sidt2	SID1 transmembrane family, member 2	9		response to glucose			IMP	MGI:5532825 	J:204228 	
+MGI:107157	Sin3a	transcriptional regulator, SIN3A (yeast)	9		cellular response to glucose stimulus			IDA		J:126723 	
+MGI:2135607	Sirt1	sirtuin 1	10		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1308542 	J:155856 	
+MGI:2442682	Slc30a8	solute carrier family 30 (zinc transporter), member 8	15		response to glucose			IMP		J:152629 	
+MGI:2442682	Slc30a8	solute carrier family 30 (zinc transporter), member 8	15		response to glucose			ISO	Q8IWU4 	J:164563 	
+MGI:2442682	Slc30a8	solute carrier family 30 (zinc transporter), member 8	15		response to glucose			ISO	RGD:1308282 	J:155856 	
+MGI:108051	Smad2	SMAD family member 2	18		response to glucose	has the participant blood|has the participant plasma		IGI	MGI:87912 	J:125512 	
+MGI:88192	Smarca4	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily a, member 4	9		positive regulation of glucose mediated signaling pathway			ISO	P51532 	J:164563 	
+MGI:1328366	Smarcb1	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily b, member 1	10		positive regulation of glucose mediated signaling pathway			ISO	Q12824 	J:164563 	
+MGI:98366	Sox4	SRY (sex determining region Y)-box 4	13		cellular response to glucose stimulus			IMP		J:141688 	
+MGI:107606	Srebf1	sterol regulatory element binding transcription factor 1	11		response to glucose	has the participant islets of Langerhans		IMP	MGI:2177958 	J:133587 	
+MGI:98419	Sri	sorcin	5		positive regulation of insulin secretion involved in cellular response to glucose stimulus			IMP		J:196242 	
+MGI:893577	Stx4a	syntaxin 4A (placental)	7		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q12846 	J:164563 	
+MGI:1342296	Stxbp4	syntaxin binding protein 4	11		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q6ZWJ1 	J:164563 	
+MGI:2442392	Sybu	syntabulin (syntaxin-interacting)	15		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	F1LUC0 	J:190127 	
+MGI:1202879	Tcf7l2	transcription factor 7 like 2, T cell specific, HMG box	19		regulation of insulin secretion involved in cellular response to glucose stimulus	regulates a function/process that happens in islets of Langerhans,regulates a function/process that happens in type B pancreatic cell		IMP		J:155182 	
+MGI:1202879	Tcf7l2	transcription factor 7 like 2, T cell specific, HMG box	19		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	D4A9H4 	J:73065 	
+MGI:1202879	Tcf7l2	transcription factor 7 like 2, T cell specific, HMG box	19		response to glucose			IMP		J:155182 	
+MGI:98737	Thbs1	thrombospondin 1	2		response to glucose			ISO	P07996 	J:164563 	
+MGI:103306	Tiam1	T cell lymphoma invasion and metastasis 1	16		regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1307455 	J:155856 	
+MGI:1926234	Tmem27	transmembrane protein 27	X		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	Q9HBJ8 	J:164563 	
+MGI:3522699	Trpa1	transient receptor potential cation channel, subfamily A, member 1	1		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:1303284 	J:155856 	
+MGI:1915917	Trpm4	transient receptor potential cation channel, subfamily M, member 4	7		positive regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:620244 	J:155856 	
+MGI:109354	Ucp2	uncoupling protein 2 (mitochondrial, proton carrier)	7		negative regulation of insulin secretion involved in cellular response to glucose stimulus			ISO	RGD:3932 	J:155856 	
+MGI:1342278	Unc13b	unc-13 homolog B (C. elegans)	4		cellular response to glucose stimulus			ISO	RGD:619723 	J:155856 	
+MGI:1342278	Unc13b	unc-13 homolog B (C. elegans)	4		cellular response to glucose stimulus			ISO	O14795 	J:164563 	
+MGI:1313277	Vamp2	vesicle-associated membrane protein 2	11		response to glucose			ISO	RGD:3949 	J:155856 	
+MGI:98926	Vcam1	vascular cell adhesion molecule 1	3		cellular response to glucose stimulus			IDA		J:126723 	
+MGI:1349453	Vsnl1	visinin-like 1	12		positive regulation of insulin secretion involved in cellular response to glucose stimulus	happens in islets of Langerhans		IDA		J:116472 	
+MGI:98970	Xbp1	X-box binding protein 1	11		cellular response to glucose stimulus			IDA		J:137188 	
+
