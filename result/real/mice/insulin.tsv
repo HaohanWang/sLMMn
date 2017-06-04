@@ -1,0 +1,301 @@
+MGI Gene/Marker ID	Symbol	Name	Chr	Qualifier	Annotated Term	Context	Proteoform	Evidence	Inferred From	Reference(s)
+MGI:1328365	Aanat	arylalkylamine N-acetyltransferase	11		response to insulin			ISO	RGD:2006 	J:155856 	
+MGI:2661081	Acvr1c	activin A receptor, type IC	2		response to insulin			IMP	MGI:3512292 	J:136322 	
+MGI:106675	Adipoq	adiponectin, C1Q and collagen domain containing	16		cellular response to insulin stimulus			IGI	MGI:88157 	J:126780 	
+MGI:106675	Adipoq	adiponectin, C1Q and collagen domain containing	16		cellular response to insulin stimulus			ISO	RGD:628748 	J:155856 	
+MGI:1919924	Adipor1	adiponectin receptor 1	1		positive regulation of insulin receptor signaling pathway			ISO	RGD:1303151 	J:155856 	
+MGI:87963	Agt	angiotensinogen (serpin peptidase inhibitor, clade A, member 8)	8		positive regulation of glucose import in response to insulin stimulus			ISO	RGD:2069 	J:155856 	
+MGI:107189	Ahsg	alpha-2-HS-glycoprotein	16		negative regulation of insulin receptor signaling pathway			ISO	RGD:2075 	J:155856 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		cellular response to insulin stimulus			IDA		J:126754 J:145864 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		cellular response to insulin stimulus			IMP		J:126754 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		cellular response to insulin stimulus			ISO	P31749 	J:164563 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		cellular response to insulin stimulus			ISO	RGD:2081 	J:155856 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		cellular response to insulin stimulus			ISO	P47196 	J:73065 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		insulin receptor signaling pathway			IMP		J:113828 J:114062 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		insulin receptor signaling pathway			ISO	RGD:2081 	J:155856 	
+MGI:87986	Akt1	thymoma viral proto-oncogene 1	12		insulin receptor signaling pathway			ISO	P31749 	J:164563 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		cellular response to insulin stimulus			IDA		J:176652 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		cellular response to insulin stimulus			ISO	P31751 	J:164563 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		cellular response to insulin stimulus			ISO	P47197 	J:73065 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		insulin receptor signaling pathway			IDA		J:182891 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		insulin receptor signaling pathway			ISO	P31751 	J:164563 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		positive regulation of glucose import in response to insulin stimulus			IGI	MGI:1921991 	J:176652 	
+MGI:104874	Akt2	thymoma viral proto-oncogene 2	7		response to insulin			ISO	RGD:2082 	J:155856 	
+MGI:1345147	Akt3	thymoma viral proto-oncogene 3	1		cellular response to insulin stimulus			ISO	NP_005456 	J:54026 	
+MGI:1345147	Akt3	thymoma viral proto-oncogene 3	1		cellular response to insulin stimulus			ISO	Q63484 	J:73065 	
+MGI:1917887	Ankrd26	ankyrin repeat domain 26	6		negative regulation of insulin receptor signaling pathway	regulates a function/process that happens in white fat		IMP	MGI:3774418 	J:178128 	
+MGI:1920243	Appl1	adaptor protein, phosphotyrosine interaction, PH domain and leucine zipper containing 1	14		insulin receptor signaling pathway			ISO	Q9UKG1 	J:164563 	
+MGI:2137336	Baiap2	brain-specific angiogenesis inhibitor 1-associated protein 2	11		insulin receptor signaling pathway			IBA	PTN001022094 	J:161428 	
+MGI:1914148	Baiap2l1	BAI1-associated protein 2-like 1	5		insulin receptor signaling pathway			IBA	PTN001022094 	J:161428 	
+MGI:1914148	Baiap2l1	BAI1-associated protein 2-like 1	5		regulation of insulin receptor signaling pathway			IEA	IPR030060 	J:72247 	
+MGI:2652819	Baiap2l2	BAI1-associated protein 2-like 2	15		insulin receptor signaling pathway			IBA	PTN001022094 	J:161428 	
+MGI:108091	Bcar1	breast cancer anti-estrogen resistance 1	8		insulin receptor signaling pathway			ISO	RGD:2406 	J:155856 	
+MGI:88157	Bglap2	bone gamma-carboxyglutamate protein 2	3		cellular response to insulin stimulus			IGI	MGI:106675 	J:126780 	
+MGI:88157	Bglap2	bone gamma-carboxyglutamate protein 2	3		cellular response to insulin stimulus			IMP	MGI:2180471 	J:126780 	
+MGI:1921991	C2cd5	C2 calcium-dependent domain containing 5	6		cellular response to insulin stimulus			IDA		J:176652 	
+MGI:1921991	C2cd5	C2 calcium-dependent domain containing 5	6		cellular response to insulin stimulus			ISO	Q86YS7 	J:164563 	
+MGI:1921991	C2cd5	C2 calcium-dependent domain containing 5	6		insulin receptor signaling pathway via phosphatidylinositol 3-kinase			IMP		J:176652 	
+MGI:1921991	C2cd5	C2 calcium-dependent domain containing 5	6		positive regulation of glucose import in response to insulin stimulus			IGI	MGI:104874 	J:176652 	
+MGI:1921991	C2cd5	C2 calcium-dependent domain containing 5	6		positive regulation of glucose import in response to insulin stimulus			IMP		J:176652 	
+MGI:1916969	Cad	carbamoyl-phosphate synthetase 2, aspartate transcarbamylase, and dihydroorotase	5		response to insulin			ISO	RGD:1588606 	J:155856 	
+MGI:1344392	Capn10	calpain 10	1		cellular response to insulin stimulus			IMP		J:133015 	
+MGI:1344392	Capn10	calpain 10	1		cellular response to insulin stimulus			ISO	Q9HC96 	J:164563 	
+MGI:107571	Cav2	caveolin 2	6		insulin receptor signaling pathway			ISO	RGD:620348 	J:155856 	
+MGI:107571	Cav2	caveolin 2	6		insulin receptor signaling pathway			ISO	P51636 	J:164563 	
+MGI:88315	Ccnd3	cyclin D3	17		regulation of insulin receptor signaling pathway			IGI	MGI:88357 	J:230033 	
+MGI:104772	Cdk2	cyclin-dependent kinase 2	10		cellular response to insulin stimulus			ISO	RGD:70486 	J:155856 	
+MGI:88357	Cdk4	cyclin-dependent kinase 4	10		cellular response to insulin stimulus			IMP	MGI:2154521 	J:230033 	
+MGI:88357	Cdk4	cyclin-dependent kinase 4	10		regulation of insulin receptor signaling pathway			IMP	MGI:2154520 MGI:2154521 	J:230033 	
+MGI:103159	Cish	cytokine inducible SH2-containing protein	9		negative regulation of insulin receptor signaling pathway			IBA	PTN000043896 	J:161428 	
+MGI:108023	Cited1	Cbp/p300-interacting transactivator with Glu/Asp-rich carboxy-terminal domain 1	X		response to insulin			IDA		J:50846 	
+MGI:108442	Cpeb1	cytoplasmic polyadenylation element binding protein 1	7		cellular response to insulin stimulus			ISO	Q9BZB8 	J:164563 	
+MGI:2442640	Cpeb2	cytoplasmic polyadenylation element binding protein 2	5		cellular response to insulin stimulus			ISO	Q7Z5Q1 	J:164563 	
+MGI:1270841	Cry1	cryptochrome 1 (photolyase-like)	10		response to insulin			IGI		J:198214 	
+MGI:1270859	Cry2	cryptochrome 2 (photolyase-like)	2		response to insulin			IGI		J:198214 	
+MGI:1338801	Cyfip1	cytoplasmic FMR1 interacting protein 1	7		cellular response to insulin stimulus			ISO	RGD:1310332 	J:155856 	
+MGI:1098274	Cyp27b1	cytochrome P450, family 27, subfamily b, polypeptide 1	10		response to insulin			ISO	RGD:69192 	J:155856 	
+MGI:1914769	Dennd4c	DENN/MADD domain containing 4C	4		cellular response to insulin stimulus			IMP		J:196254 	
+MGI:95295	Egr1	early growth response 1	18		response to insulin			IDA		J:154844 	
+MGI:95296	Egr2	early growth response 2	10		response to insulin			ISO	RGD:621608 	J:155856 	
+MGI:103267	Eif4ebp1	eukaryotic translation initiation factor 4E binding protein 1	8		insulin receptor signaling pathway			IDA		J:27764 	
+MGI:109198	Eif4ebp2	eukaryotic translation initiation factor 4E binding protein 2	10		insulin receptor signaling pathway			IDA		J:51748 	
+MGI:1196288	Eif6	eukaryotic translation initiation factor 6	2		response to insulin			IMP		J:226984 	
+MGI:97370	Enpp1	ectonucleotide pyrophosphatase/phosphodiesterase 1	10		cellular response to insulin stimulus			ISO	P22413 	J:164563 	
+MGI:97370	Enpp1	ectonucleotide pyrophosphatase/phosphodiesterase 1	10		negative regulation of insulin receptor signaling pathway			ISO	P22413 	J:164563 	
+MGI:1925031	Epm2aip1	EPM2A (laforin) interacting protein 1	9		response to insulin	happens in liver		IMP	MGI:3857785 	J:204966 	
+MGI:1346831	Esrra	estrogen related receptor, alpha	19		positive regulation of cellular response to insulin stimulus			ISO	RGD:1583866 	J:155856 	
+MGI:1914639	Fam132a	family with sequence similarity 132, member A	4		positive regulation of insulin receptor signaling pathway			IDA		J:183116 	
+MGI:105917	Fer	fer (fms/fps related) protein kinase	17		cellular response to insulin stimulus			IDA		J:66245 	
+MGI:105917	Fer	fer (fms/fps related) protein kinase	17		insulin receptor signaling pathway via phosphatidylinositol 3-kinase			IDA		J:66245 	
+MGI:2685324	Ffar3	free fatty acid receptor 3	7		positive regulation of glucose import in response to insulin stimulus			IMP		J:211310 	
+MGI:1347481	Foxc2	forkhead box C2	8		insulin receptor signaling pathway			ISO	Q99958 	J:164563 	
+MGI:1347481	Foxc2	forkhead box C2	8		insulin receptor signaling pathway			ISS		J:40156 	
+MGI:1890077	Foxo1	forkhead box O1	3		cellular response to insulin stimulus			IDA		J:129943 	
+MGI:1890077	Foxo1	forkhead box O1	3		insulin receptor signaling pathway			IMP	MGI:2447732 	J:80826 	
+MGI:1891915	Foxo4	forkhead box O4	X		insulin receptor signaling pathway			ISO	P98177 	J:164563 	
+MGI:1270854	Gck	glucokinase	11		cellular response to insulin stimulus			ISO	RGD:2670 	J:155856 	
+MGI:1329035	Ggh	gamma-glutamyl hydrolase	4		response to insulin			ISO	RGD:2682 	J:155856 	
+MGI:95707	Gh	growth hormone	11		cellular response to insulin stimulus	happens in pituitary gland		IDA		J:129482 	
+MGI:95710	Ghrhr	growth hormone releasing hormone receptor	6		cellular response to insulin stimulus	happens in pituitary gland		IDA		J:129482 	
+MGI:95710	Ghrhr	growth hormone releasing hormone receptor	6		response to insulin			ISO	Q02643 	J:164563 	
+MGI:2441906	Ghsr	growth hormone secretagogue receptor	3		cellular response to insulin stimulus	happens in pituitary gland		IDA		J:129482 	
+MGI:109162	Gpam	glycerol-3-phosphate acyltransferase, mitochondrial	19		cellular response to insulin stimulus			ISO	RGD:61847 	J:155856 	
+MGI:106604	Gpld1	glycosylphosphatidylinositol specific phospholipase D1	13		cellular response to insulin stimulus			ISO	P80108 	J:164563 	
+MGI:106604	Gpld1	glycosylphosphatidylinositol specific phospholipase D1	13		insulin receptor signaling pathway			ISO	P80108 	J:164563 	
+MGI:106604	Gpld1	glycosylphosphatidylinositol specific phospholipase D1	13		regulation of cellular response to insulin stimulus			ISO	P80108 	J:164563 	
+MGI:2441890	Gpr21	G protein-coupled receptor 21	2		negative regulation of insulin receptor signaling pathway	regulates a function/process that happens in liver|regulates a function/process that happens in adipose tissue		IMP	MGI:5314799 	J:190473 	
+MGI:95805	Grb2	growth factor receptor bound protein 2	11		insulin receptor signaling pathway			ISO	P62993 	J:164563 	
+MGI:103232	Grb10	growth factor receptor bound protein 10	11		insulin receptor signaling pathway			ISO	RGD:1566234 	J:155856 	
+MGI:103232	Grb10	growth factor receptor bound protein 10	11		negative regulation of insulin receptor signaling pathway			IMP		J:149197 	
+MGI:103232	Grb10	growth factor receptor bound protein 10	11		response to insulin			ISO	RGD:1566234 	J:155856 	
+MGI:1355324	Grb14	growth factor receptor bound protein 14	2		insulin receptor signaling pathway			ISO	RGD:61869 	J:155856 	
+MGI:1355324	Grb14	growth factor receptor bound protein 14	2		negative regulation of insulin receptor signaling pathway			ISO	RGD:61869 	J:155856 	
+MGI:2152453	Gsk3a	glycogen synthase kinase 3 alpha	7		cellular response to insulin stimulus			ISO	P49840 	J:164563 	
+MGI:2152453	Gsk3a	glycogen synthase kinase 3 alpha	7		insulin receptor signaling pathway			IDA		J:145810 	
+MGI:2152453	Gsk3a	glycogen synthase kinase 3 alpha	7		negative regulation of insulin receptor signaling pathway			ISO	P49840 	J:164563 	
+MGI:1888388	H2afz	H2A histone family, member Z	3		cellular response to insulin stimulus			ISO	RGD:621464 	J:155856 	
+MGI:2135593	Hadha	hydroxyacyl-Coenzyme A dehydrogenase/3-ketoacyl-Coenzyme A thiolase/enoyl-Coenzyme A hydratase (trifunctional protein), alpha subunit	5		response to insulin			IMP	MGI:2137697 	J:101304 	
+MGI:1931221	Hdac9	histone deacetylase 9	12		cellular response to insulin stimulus			ISO	Q9UKV0 	J:164563 	
+MGI:99894	Hnrnpk	heterogeneous nuclear ribonucleoprotein K	13		cellular response to insulin stimulus			ISO	RGD:71058 	J:155856 	
+MGI:96433	Igf1r	insulin-like growth factor I receptor	7		cellular response to insulin stimulus			IMP	MGI:2386329 	J:186813 	
+MGI:96434	Igf2	insulin-like growth factor 2	7		insulin receptor signaling pathway via phosphatidylinositol 3-kinase			IMP		J:158405 	
+MGI:96434	Igf2	insulin-like growth factor 2	7		positive regulation of insulin receptor signaling pathway			IMP		J:158405 	
+MGI:96434	Igf2	insulin-like growth factor 2	7		positive regulation of insulin receptor signaling pathway			ISO	P01344 	J:164563 	
+MGI:96543	Il1b	interleukin 1 beta	2		negative regulation of insulin receptor signaling pathway			IDA		J:143678 	
+MGI:1194899	Inpp5k	inositol polyphosphate 5-phosphatase K	11		cellular response to insulin stimulus			ISO	Q9BT40 	J:164563 	
+MGI:1194899	Inpp5k	inositol polyphosphate 5-phosphatase K	11		negative regulation of insulin receptor signaling pathway			IMP		J:177248 	
+MGI:1194899	Inpp5k	inositol polyphosphate 5-phosphatase K	11		negative regulation of insulin receptor signaling pathway			ISO	Q9BT40 	J:164563 	
+MGI:1194899	Inpp5k	inositol polyphosphate 5-phosphatase K	11		response to insulin			IMP	MGI:3810936 	J:139745 	
+MGI:1333787	Inppl1	inositol polyphosphate phosphatase-like 1	7		negative regulation of insulin receptor signaling pathway			ISO	RGD:68396 	J:155856 	
+MGI:1333787	Inppl1	inositol polyphosphate phosphatase-like 1	7		response to insulin			IMP	MGI:3531322 	J:96443 	
+MGI:96573	Ins2	insulin II	7		insulin receptor signaling pathway			IDA		J:83950 	
+MGI:96573	Ins2	insulin II	7		insulin receptor signaling pathway			ISO	P01308 	J:164563 	
+MGI:96573	Ins2	insulin II	7		positive regulation of insulin receptor signaling pathway			ISO	P01308 	J:164563 	
+MGI:96575	Insr	insulin receptor	8		cellular response to insulin stimulus			ISO	P06213 	J:164563 	
+MGI:96575	Insr	insulin receptor	8		insulin receptor signaling pathway			IMP	MGI:1857204 	J:80826 	
+MGI:96575	Insr	insulin receptor	8		insulin receptor signaling pathway			ISO	RGD:2917 	J:155856 	
+MGI:96575	Insr	insulin receptor	8		insulin receptor signaling pathway			ISO	P06213 	J:164563 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		cellular response to insulin stimulus	happens in fat cell		IDA		J:107119 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		cellular response to insulin stimulus			ISO	P35568 	J:164563 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		insulin receptor signaling pathway			IBA	PTN000064809 	J:161428 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		insulin receptor signaling pathway			ISO	P35568 	J:164563 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		insulin receptor signaling pathway			ISO	RGD:2922 	J:155856 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		negative regulation of insulin receptor signaling pathway			ISO	RGD:2922 	J:155856 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		positive regulation of glucose import in response to insulin stimulus			ISO	P35568 	J:164563 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		positive regulation of insulin receptor signaling pathway			ISO	RGD:2922 	J:155856 	
+MGI:99454	Irs1	insulin receptor substrate 1	1		response to insulin			ISO	P35568 	J:164563 	
+MGI:109334	Irs2	insulin receptor substrate 2	8		cellular response to insulin stimulus	happens in fat cell		IDA		J:107119 	
+MGI:109334	Irs2	insulin receptor substrate 2	8		cellular response to insulin stimulus			ISO	RGD:69316 	J:155856 	
+MGI:109334	Irs2	insulin receptor substrate 2	8		cellular response to insulin stimulus			ISO	Q9Y4H2 	J:164563 	
+MGI:109334	Irs2	insulin receptor substrate 2	8		insulin receptor signaling pathway			IMP	MGI:2158686 	J:80826 	
+MGI:109334	Irs2	insulin receptor substrate 2	8		insulin receptor signaling pathway			ISO	RGD:69316 	J:155856 	
+MGI:1194882	Irs3	insulin receptor substrate 3	5		insulin receptor signaling pathway			IBA	PTN000064809 	J:161428 	
+MGI:1338009	Irs4	insulin receptor substrate 4	X		insulin receptor signaling pathway			IBA	PTN000064809 	J:161428 	
+MGI:2147707	Kank1	KN motif and ankyrin repeat domains 1	19		negative regulation of insulin receptor signaling pathway			ISO	Q14678 	J:164563 	
+MGI:1343094	Kat2b	K(lysine) acetyltransferase 2B	17		cellular response to insulin stimulus			ISO	Q92831 	J:164563 	
+MGI:1096353	Khk	ketohexokinase	5		response to insulin			ISO	RGD:2966 	J:155856 	
+MGI:1101771	Kl	klotho	5		insulin receptor signaling pathway			IEA	IPR028546 	J:72247 	
+MGI:104663	Lep	leptin	6		positive regulation of insulin receptor signaling pathway			ISO	RGD:3000 	J:155856 	
+MGI:104663	Lep	leptin	6		response to insulin			IMP	MGI:1856424 	J:129798 	
+MGI:1915671	Lmbrd1	LMBR1 domain containing 1	1		negative regulation of insulin receptor signaling pathway	happens in cardiac muscle cell	PR:Q8K0B2-1	IMP	MGI:5559223 	J:204994 	
+MGI:1891340	Lpin1	lipin 1	12		cellular response to insulin stimulus	happens in inguinal tat pad,happens in fat cell		IMP	MGI:1856603 	J:42314 	
+MGI:1891340	Lpin1	lipin 1	12		cellular response to insulin stimulus			ISO	RGD:1307646 	J:155856 	
+MGI:99457	Mc4r	melanocortin 4 receptor	18		response to insulin			IMP	MGI:2183586 	J:129798 	
+MGI:2676828	Mir143	microRNA 143	18		negative regulation of insulin receptor signaling pathway			IDA		J:176266 	
+MGI:95691	Mstn	myostatin	1		negative regulation of insulin receptor signaling pathway			IMP		J:101518 	
+MGI:1928394	Mtor	mechanistic target of rapamycin (serine/threonine kinase)	4		response to insulin			IDA		J:93907 	
+MGI:106612	Myo1c	myosin IC	11		positive regulation of cellular response to insulin stimulus			ISO	RGD:620443 	J:155856 	
+MGI:105976	Myo5a	myosin VA	9		cellular response to insulin stimulus			IMP		J:191891 	
+MGI:105976	Myo5a	myosin VA	9		positive regulation of cellular response to insulin stimulus			ISO	RGD:3143 	J:155856 	
+MGI:1917066	Mzb1	marginal zone B and B1 cell-specific protein 1	18		negative regulation of glucose import in response to insulin stimulus			IDA		J:174846 	
+MGI:2385165	Ncoa5	nuclear receptor coactivator 5	2		negative regulation of insulin receptor signaling pathway	regulates a function/process that happens in liver		IMP	MGI:5581698 	J:207622 	
+MGI:97323	Ngfr	nerve growth factor receptor (TNFR superfamily, member 16)	11		regulation of glucose import in response to insulin stimulus			IMP		J:183530 	
+MGI:1352464	Nr1h4	nuclear receptor subfamily 1, group H, member 4	10		positive regulation of glucose import in response to insulin stimulus			IDA		J:110560 	
+MGI:1352464	Nr1h4	nuclear receptor subfamily 1, group H, member 4	10		positive regulation of insulin receptor signaling pathway			IDA		J:110560 	
+MGI:1858179	Nucb2	nucleobindin 2	7		negative regulation of insulin receptor signaling pathway			ISO	RGD:620888 	J:155856 	
+MGI:1934811	Nucks1	nuclear casein kinase and cyclin-dependent kinase substrate 1	1		positive regulation of insulin receptor signaling pathway			IMP		J:211777 	
+MGI:1934811	Nucks1	nuclear casein kinase and cyclin-dependent kinase substrate 1	1		regulation of insulin receptor signaling pathway	happens in hypothalamus,is a part of cellular glucose homeostasis		IMP		J:226101 	
+MGI:1339639	Ogt	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)	X		regulation of insulin receptor signaling pathway			ISO	O15294 	J:164563 	
+MGI:1339639	Ogt	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)	X		response to insulin			ISO	O15294 	J:164563 	
+MGI:97439	Oprk1	opioid receptor, kappa 1	1		response to insulin			ISO	RGD:69426 	J:155856 	
+MGI:2443807	Osbpl8	oxysterol binding protein-like 8	10		positive regulation of glucose import in response to insulin stimulus	happens in cardiac muscle cell		IMP		J:222138 	
+MGI:2443807	Osbpl8	oxysterol binding protein-like 8	10		positive regulation of insulin receptor signaling pathway			IMP		J:176266 	
+MGI:1339975	Pak1	p21 protein (Cdc42/Rac)-activated kinase 1	7		cellular response to insulin stimulus			ISO	RGD:3250 	J:155856 	
+MGI:1339975	Pak1	p21 protein (Cdc42/Rac)-activated kinase 1	7		positive regulation of glucose import in response to insulin stimulus			ISO	RGD:3250 	J:155856 	
+MGI:1340806	Parp1	poly (ADP-ribose) polymerase family, member 1	1		cellular response to insulin stimulus			ISO	P09874 	J:164563 	
+MGI:97501	Pck1	phosphoenolpyruvate carboxykinase 1, cytosolic	2		response to insulin			ISO	P35558 	J:164563 	
+MGI:2140260	Pcsk9	proprotein convertase subtilisin/kexin type 9	4		cellular response to insulin stimulus			IDA		J:118822 	
+MGI:2140260	Pcsk9	proprotein convertase subtilisin/kexin type 9	4		cellular response to insulin stimulus			ISO	RGD:728909 	J:155856 	
+MGI:1343087	Pdk2	pyruvate dehydrogenase kinase, isoenzyme 2	11		insulin receptor signaling pathway			IMP		J:185475 	
+MGI:1351481	Pdk4	pyruvate dehydrogenase kinase, isoenzyme 4	6		insulin receptor signaling pathway			IMP		J:156363 	
+MGI:1351481	Pdk4	pyruvate dehydrogenase kinase, isoenzyme 4	6		insulin receptor signaling pathway			ISO	Q16654 	J:164563 	
+MGI:1338068	Pdpk1	3-phosphoinositide dependent protein kinase 1	17		cellular response to insulin stimulus			ISO	O15530 	J:164563 	
+MGI:1932404	Phip	pleckstrin homology domain interacting protein	9		insulin receptor signaling pathway			IDA		J:66427 	
+MGI:2138391	Pid1	phosphotyrosine interaction domain containing 1	1		negative regulation of glucose import in response to insulin stimulus			ISO	Q7Z2X4 	J:164563 	
+MGI:2138391	Pid1	phosphotyrosine interaction domain containing 1	1		negative regulation of insulin receptor signaling pathway			ISO	Q7Z2X4 	J:164563 	
+MGI:97583	Pik3r1	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 1 (p85 alpha)	13		cellular response to insulin stimulus			IDA		J:159304 J:230033 	
+MGI:97583	Pik3r1	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 1 (p85 alpha)	13		insulin receptor signaling pathway			ISO	RGD:3329 	J:155856 	
+MGI:97583	Pik3r1	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 1 (p85 alpha)	13		regulation of insulin receptor signaling pathway			IGI	MGI:88315 	J:230033 	
+MGI:97583	Pik3r1	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 1 (p85 alpha)	13		response to insulin			ISO	RGD:3329 	J:155856 	
+MGI:1098772	Pik3r2	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 2 (p85 beta)	8		cellular response to insulin stimulus			IDA		J:159304 	
+MGI:1098772	Pik3r2	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 2 (p85 beta)	8		insulin receptor signaling pathway			IBA	PTN000016388 	J:161428 	
+MGI:1098772	Pik3r2	phosphatidylinositol 3-kinase, regulatory subunit, polypeptide 2 (p85 beta)	8		insulin receptor signaling pathway			NAS		J:114127 	
+MGI:109277	Pik3r3	phosphatidylinositol 3 kinase, regulatory subunit, polypeptide 3 (p55)	4		insulin receptor signaling pathway			IDA		J:36742 	
+MGI:97604	Pklr	pyruvate kinase liver and red blood cell	3		cellular response to insulin stimulus			IBA	PTN000212861 	J:161428 	
+MGI:97604	Pklr	pyruvate kinase liver and red blood cell	3		cellular response to insulin stimulus			ISO	RGD:3336 	J:155856 	
+MGI:97591	Pkm	pyruvate kinase, muscle	9		cellular response to insulin stimulus			IBA	PTN000212861 	J:161428 	
+MGI:97613	Plcb1	phospholipase C, beta 1	2		insulin receptor signaling pathway			TAS		J:169984 	
+MGI:104740	Ppara	peroxisome proliferator activated receptor alpha	15		response to insulin			ISO	RGD:3369 	J:155856 	
+MGI:97747	Pparg	peroxisome proliferator activated receptor gamma	6		cellular response to insulin stimulus			IMP		J:234039 	
+MGI:97747	Pparg	peroxisome proliferator activated receptor gamma	6		cellular response to insulin stimulus			ISO	P37231 	J:164563 	
+MGI:97747	Pparg	peroxisome proliferator activated receptor gamma	6		negative regulation of cellular response to insulin stimulus			IMP		J:196126 	
+MGI:2145955	Prkaa1	protein kinase, AMP-activated, alpha 1 catalytic subunit	15		negative regulation of glucose import in response to insulin stimulus			ISO	RGD:3387 	J:155856 	
+MGI:97595	Prkca	protein kinase C, alpha	11		negative regulation of insulin receptor signaling pathway			IMP	MGI:2679305 	J:85923 	
+MGI:97596	Prkcb	protein kinase C, beta	7		negative regulation of insulin receptor signaling pathway			ISO	RGD:3396 	J:155856 	
+MGI:97598	Prkcd	protein kinase C, delta	14		negative regulation of insulin receptor signaling pathway			IMP		J:145810 	
+MGI:99260	Prkci	protein kinase C, iota	3		cellular response to insulin stimulus			IMP		J:148082 	
+MGI:99260	Prkci	protein kinase C, iota	3		cellular response to insulin stimulus			ISO	RGD:620961 	J:155856 	
+MGI:97601	Prkcq	protein kinase C, theta	2		negative regulation of insulin receptor signaling pathway			ISO	Q04759 	J:164563 	
+MGI:97602	Prkcz	protein kinase C, zeta	4		cellular response to insulin stimulus			ISO	RGD:3399 	J:155856 	
+MGI:97602	Prkcz	protein kinase C, zeta	4		insulin receptor signaling pathway			ISO	RGD:3399 	J:155856 	
+MGI:97602	Prkcz	protein kinase C, zeta	4		negative regulation of insulin receptor signaling pathway			ISO	Q05513 	J:164563 	
+MGI:97602	Prkcz	protein kinase C, zeta	4		positive regulation of insulin receptor signaling pathway			ISO	RGD:3399 	J:155856 	
+MGI:104779	Prkdc	protein kinase, DNA activated, catalytic polypeptide	16		cellular response to insulin stimulus			ISO	P78527 	J:164563 	
+MGI:3644668	Prlh	prolactin releasing hormone	1		response to insulin			IMP	MGI:3832409 	J:144729 	
+MGI:97805	Ptpn1	protein tyrosine phosphatase, non-receptor type 1	2		insulin receptor signaling pathway			IMP		J:96001 	
+MGI:97805	Ptpn1	protein tyrosine phosphatase, non-receptor type 1	2		regulation of insulin receptor signaling pathway			ISO	RGD:61965 	J:155856 	
+MGI:97806	Ptpn2	protein tyrosine phosphatase, non-receptor type 2	18		insulin receptor signaling pathway			IMP		J:96001 	
+MGI:97806	Ptpn2	protein tyrosine phosphatase, non-receptor type 2	18		negative regulation of insulin receptor signaling pathway			IMP		J:169644 J:196641 	
+MGI:99511	Ptpn11	protein tyrosine phosphatase, non-receptor type 11	5		positive regulation of glucose import in response to insulin stimulus			ISO	Q06124 	J:164563 	
+MGI:97808	Ptpra	protein tyrosine phosphatase, receptor type, A	2		insulin receptor signaling pathway			IMP	MGI:2445612 	J:87936 	
+MGI:97813	Ptpre	protein tyrosine phosphatase, receptor type, E	7		negative regulation of insulin receptor signaling pathway			IDA		J:131128 	
+MGI:97813	Ptpre	protein tyrosine phosphatase, receptor type, E	7		negative regulation of insulin receptor signaling pathway			ISO	RGD:620771 	J:155856 	
+MGI:102695	Ptprf	protein tyrosine phosphatase, receptor type, F	4		negative regulation of insulin receptor signaling pathway			ISO	RGD:3453 	J:155856 	
+MGI:108027	Ptprv	protein tyrosine phosphatase, receptor type, V	1		cellular response to insulin stimulus			IMP	MGI:3039948 	J:126780 	
+MGI:96960	Rab8a	RAB8A, member RAS oncogene family	8		cellular response to insulin stimulus			ISO	RGD:621144 	J:155856 	
+MGI:105066	Rab10	RAB10, member RAS oncogene family	12		cellular response to insulin stimulus			IMP		J:189988 J:191891 	
+MGI:1927232	Rab13	RAB13, member RAS oncogene family	3		cellular response to insulin stimulus			ISO	RGD:620880 	J:155856 	
+MGI:1914603	Rab31	RAB31, member RAS oncogene family	17		cellular response to insulin stimulus			ISO	Q13636 	J:164563 	
+MGI:1918910	Rarres2	retinoic acid receptor responder (tazarotene induced) 2	6		positive regulation of glucose import in response to insulin stimulus			IDA		J:202588 	
+MGI:1918910	Rarres2	retinoic acid receptor responder (tazarotene induced) 2	6		positive regulation of glucose import in response to insulin stimulus			ISO	Q99969 	J:164563 	
+MGI:1100865	Rbm4	RNA binding motif protein 4	19		regulation of insulin receptor signaling pathway			IDA		J:192831 	
+MGI:97879	Rbp4	retinol binding protein 4, plasma	19		response to insulin			IMP	MGI:2445721 	J:99988 	
+MGI:103290	Rela	v-rel reticuloendotheliosis viral oncogene homolog A (avian)	19		negative regulation of insulin receptor signaling pathway			ISO	RGD:727889 	J:155856 	
+MGI:1889817	Repin1	replication initiator 1	6		regulation of glucose import in response to insulin stimulus			IMP		J:164798 	
+MGI:1888506	Retn	resistin	8		response to insulin			ISO	RGD:628781 	J:155856 	
+MGI:1931553	Rhoq	ras homolog family member Q	17		cellular response to insulin stimulus			IMP		J:75890 	
+MGI:1931553	Rhoq	ras homolog family member Q	17		cellular response to insulin stimulus			ISO	P17081 	J:164563 	
+MGI:1931553	Rhoq	ras homolog family member Q	17		insulin receptor signaling pathway			ISO	P17081 	J:164563 	
+MGI:1098272	Rnasel	ribonuclease L (2', 5'-oligoisoadenylate synthetase-dependent)	1		positive regulation of glucose import in response to insulin stimulus			IMP		J:204800 	
+MGI:98001	Rpe65	retinal pigment epithelium 65	3		insulin receptor signaling pathway			IMP	MGI:2181399 	J:121152 	
+MGI:1270849	Rps6kb1	ribosomal protein S6 kinase, polypeptide 1	11		cellular response to insulin stimulus			IBA	PTN000682128 	J:161428 	
+MGI:1270849	Rps6kb1	ribosomal protein S6 kinase, polypeptide 1	11		negative regulation of insulin receptor signaling pathway			ISO	P23443 	J:164563 	
+MGI:1270849	Rps6kb1	ribosomal protein S6 kinase, polypeptide 1	11		negative regulation of insulin receptor signaling pathway			ISO	RGD:620683 	J:155856 	
+MGI:1270849	Rps6kb1	ribosomal protein S6 kinase, polypeptide 1	11		response to insulin			ISO	RGD:620683 	J:155856 	
+MGI:2135958	Scap	SREBF chaperone	9		response to insulin			IMP	MGI:2148743 MGI:2180899 	J:129815 	
+MGI:1355310	Scly	selenocysteine lyase	1		response to insulin	happens in liver		IMP	MGI:4362224 	J:189255 	
+MGI:1915304	Serpina12	serine (or cysteine) peptidase inhibitor, clade A (alpha-1 antiproteinase, antitrypsin), member 12	12		positive regulation of insulin receptor signaling pathway			IMP	MGI:5568548 	J:208508 	
+MGI:2651874	Sesn2	sestrin 2	4		response to insulin			IGI	MGI:104663 MGI:1922997 	J:189021 	
+MGI:2651874	Sesn2	sestrin 2	4		response to insulin			IMP	MGI:3587950 	J:189021 	
+MGI:1922997	Sesn3	sestrin 3	9		regulation of insulin receptor signaling pathway			IMP		J:232620 	
+MGI:1922997	Sesn3	sestrin 3	9		response to insulin	has the participant liver		IGI	MGI:2651874 	J:189021 	
+MGI:1922997	Sesn3	sestrin 3	9		response to insulin			IMP		J:232620 	
+MGI:1340062	Sgk1	serum/glucocorticoid regulated kinase 1	10		cellular response to insulin stimulus			ISO	Q06226 	J:73065 	
+MGI:1345171	Sh2b2	SH2B adaptor protein 2	5		insulin receptor signaling pathway			IDA		J:54187 	
+MGI:98296	Shc1	src homology 2 domain-containing transforming protein C1	3		insulin receptor signaling pathway			IBA	PTN000037430 	J:161428 	
+MGI:98296	Shc1	src homology 2 domain-containing transforming protein C1	3		insulin receptor signaling pathway			ISO	RGD:620446 	J:155856 	
+MGI:2445031	Sik2	salt inducible kinase 2	9		insulin receptor signaling pathway			IDA		J:83587 	
+MGI:2445031	Sik2	salt inducible kinase 2	9		regulation of insulin receptor signaling pathway			IDA		J:83587 	
+MGI:2135607	Sirt1	sirtuin 1	10		positive regulation of insulin receptor signaling pathway			ISO	Q96EB6 	J:164563 	
+MGI:2135607	Sirt1	sirtuin 1	10		response to insulin			IDA		J:128457 	
+MGI:95758	Slc2a4	solute carrier family 2 (facilitated glucose transporter), member 4	11		cellular response to insulin stimulus			IDA		J:131844 J:176652 	
+MGI:95758	Slc2a4	solute carrier family 2 (facilitated glucose transporter), member 4	11		cellular response to insulin stimulus			ISO	P14672 	J:164563 	
+MGI:95758	Slc2a4	solute carrier family 2 (facilitated glucose transporter), member 4	11		glucose import in response to insulin stimulus			IDA		J:234039 	
+MGI:1860103	Slc2a8	solute carrier family 2, (facilitated glucose transporter), member 8	2		insulin receptor signaling pathway			IDA		J:62999 	
+MGI:102462	Slc9a1	solute carrier family 9 (sodium/hydrogen exchanger), member 1	4		cellular response to insulin stimulus			ISO	RGD:3718 	J:155856 	
+MGI:1917806	Slc25a33	solute carrier family 25, member 33	4		cellular response to insulin stimulus			ISO	Q9BSK2 	J:164563 	
+MGI:1347098	Slc27a1	solute carrier family 27 (fatty acid transporter), member 1	8		response to insulin			IMP	MGI:3038701 	J:88657 	
+MGI:1203524	Smarcc1	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily c, member 1	9		insulin receptor signaling pathway			IDA		J:117710 	
+MGI:1354910	Socs1	suppressor of cytokine signaling 1	16		negative regulation of insulin receptor signaling pathway			IDA		J:91027 	
+MGI:1201787	Socs2	suppressor of cytokine signaling 2	10		negative regulation of insulin receptor signaling pathway			IBA	PTN000043896 	J:161428 	
+MGI:1201791	Socs3	suppressor of cytokine signaling 3	11		negative regulation of insulin receptor signaling pathway			IDA		J:91027 	
+MGI:2651588	Socs7	suppressor of cytokine signaling 7	11		insulin receptor signaling pathway			IMP	MGI:3603205 	J:100915 	
+MGI:2444575	Soga1	suppressor of glucose, autophagy associated 1	2		insulin receptor signaling pathway			IDA		J:165436 	
+MGI:700014	Sorbs1	sorbin and SH3 domain containing 1	19		cellular response to insulin stimulus			IC		J:46223 	
+MGI:700014	Sorbs1	sorbin and SH3 domain containing 1	19		cellular response to insulin stimulus			IMP		J:114794 	
+MGI:700014	Sorbs1	sorbin and SH3 domain containing 1	19		insulin receptor signaling pathway			IC		J:46223 	
+MGI:700014	Sorbs1	sorbin and SH3 domain containing 1	19		insulin receptor signaling pathway			IDA		J:46223 	
+MGI:1338015	Sort1	sortilin 1	3		response to insulin			IMP		J:99400 	
+MGI:1338015	Sort1	sortilin 1	3		response to insulin			ISO	Q99523 	J:164563 	
+MGI:98372	Sp1	trans-acting transcription factor 1	15		cellular response to insulin stimulus			ISO	RGD:3738 	J:155856 	
+MGI:98397	Src	Rous sarcoma oncogene	2		positive regulation of insulin receptor signaling pathway			ISO	RGD:620795 	J:155856 	
+MGI:107606	Srebf1	sterol regulatory element binding transcription factor 1	11		insulin receptor signaling pathway			IDA		J:117710 	
+MGI:98285	Srsf3	serine/arginine-rich splicing factor 3	17		insulin receptor signaling pathway			TAS		J:169991 	
+MGI:98287	Srsf5	serine/arginine-rich splicing factor 5	12		response to insulin			ISO	RGD:3664 	J:155856 	
+MGI:103063	Stat1	signal transducer and activator of transcription 1	1		cellular response to insulin stimulus			ISO	RGD:3771 	J:155856 	
+MGI:107362	Stxbp3	syntaxin binding protein 3	3		response to insulin			IMP	MGI:3528591 	J:95938 	
+MGI:1342296	Stxbp4	syntaxin binding protein 4	11		insulin receptor signaling pathway			IDA		J:55848 	
+MGI:2429660	Tbc1d4	TBC1 domain family, member 4	14		cellular response to insulin stimulus			ISO	O60343 	J:164563 	
+MGI:2429660	Tbc1d4	TBC1 domain family, member 4	14		cellular response to insulin stimulus			ISO	RGD:1561609 	J:155856 	
+MGI:1345675	Trib3	tribbles pseudokinase 3	2		cellular response to insulin stimulus			IDA		J:113933 	
+MGI:3612190	Trim72	tripartite motif-containing 72	7		negative regulation of insulin receptor signaling pathway			IDA		J:214362 	
+MGI:1926945	Trpv4	transient receptor potential cation channel, subfamily V, member 4	5		response to insulin			IMP		J:188264 	
+MGI:1929183	Tsc1	tuberous sclerosis 1	2		negative regulation of insulin receptor signaling pathway			IBA	PTN000389117 	J:161428 	
+MGI:1929183	Tsc1	tuberous sclerosis 1	2		response to insulin			ISO	Q92574 	J:164563 	
+MGI:102548	Tsc2	tuberous sclerosis 2	17		cellular response to insulin stimulus			IMP		J:136406 	
+MGI:102548	Tsc2	tuberous sclerosis 2	17		negative regulation of insulin receptor signaling pathway			IBA	PTN000006943 	J:161428 	
+MGI:102548	Tsc2	tuberous sclerosis 2	17		regulation of insulin receptor signaling pathway			IMP	MGI:1857938 	J:79972 	
+MGI:3029307	Tusc5	tumor suppressor candidate 5	11		cellular response to insulin stimulus			IMP		J:234039 	
+MGI:3029307	Tusc5	tumor suppressor candidate 5	11		glucose import in response to insulin stimulus	happens in fat cell		IMP		J:234039 	
+MGI:1355274	Uchl3	ubiquitin carboxyl-terminal esterase L3 (ubiquitin thiolesterase)	14		cellular response to insulin stimulus			IDA		J:158204 	
+MGI:99542	Usf1	upstream transcription factor 1	1		cellular response to insulin stimulus			ISO	P22415 	J:164563 	
+MGI:1313277	Vamp2	vesicle-associated membrane protein 2	11		cellular response to insulin stimulus			IDA		J:131844 	
+MGI:1343180	Vgf	VGF nerve growth factor inducible	5		response to insulin			IMP	MGI:2179681 	J:129798 	
+MGI:2684334	Vwa2	von Willebrand factor A domain containing 2	19		regulation of insulin receptor signaling pathway			ISO	Q5GFL6 	J:164563 	
+MGI:2685541	Wdtc1	WD and tetratricopeptide repeats 1	4		cellular response to insulin stimulus			IMP	MGI:3774270 	J:129966 	
+MGI:98970	Xbp1	X-box binding protein 1	11		cellular response to insulin stimulus			IDA		J:159304 	
+MGI:99146	Ybx1	Y box protein 1	4		negative regulation of insulin receptor signaling pathway			ISO	RGD:61843 	J:155856 	
+MGI:108109	Ywhag	tyrosine 3-monooxygenase/tryptophan 5-monooxygenase activation protein, gamma polypeptide	5		cellular response to insulin stimulus			ISO	RGD:62002 	J:155856 	
+MGI:107946	Zfp36l1	zinc finger protein 36, C3H type-like 1	12		cellular response to insulin stimulus			ISO	Q07352 	J:164563 	
+MGI:1270153	Zfp106	zinc finger protein 106	2		insulin receptor signaling pathway			IDA		J:46536 	
+
