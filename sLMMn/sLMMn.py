@@ -18,7 +18,7 @@ from utility import dataLoader
 from utility.simpleFunctions import *
 
 
-def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50,model='lasso', mode='linear',flag=False):
+def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50,model='lasso', mode='linear',flag=False,lam=1e-2):
     """
     train linear mixed model lasso
 
@@ -45,7 +45,7 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
         y = scipy.reshape(y, (n_s, 1))
 
     X0 = np.ones(len(y)).reshape(len(y), 1)
-    print "begin"
+    # print "begin"
     if mode != 'linear':
         S, U, ldelta0, monitor_nm = train_nullmodel(y, K, S=Kva, U=Kve, numintervals=numintervals, ldeltamin=ldeltamin, ldeltamax=ldeltamax, mode=mode)
 
@@ -70,19 +70,29 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
         # monitor_nm['ldeltaopt'] = 0
         # monitor_nm['nllopt'] = 0
         SUX0 = None
-    # np.savetxt('sux2.csv', SUX, delimiter=',')
+
+    f=open('f.txt','a')
+    f.write('lmm')
+    f.write('\n')
+    f.close()
+
+# np.savetxt('sux2.csv', SUX, delimiter=',')
     # np.savetxt('suy2.csv', SUy, delimiter=',')
     # regs = {'linear':(1e-15, 1e15), 'lmm':(1e-30, 1e30), 'lmm2':(1e-30, 1e30), 'lmmn':(1e-30, 1e30)}
     #
     # w1 = hypothesisTest(SUX, SUy, X, SUX0, X0)
     #breg, w2, ss = cv_train(SUX, SUy.reshape([n_s, 1]), regMin=regs[mode][0], regMax=regs[mode][1], K=discoverNum)
     if flag==False:
-        beta = runLasso(SUX, SUy,mode, model,maxEigen=np.max(Kva))
+        beta = runLasso(SUX, SUy,mode, model,maxEigen=np.max(Kva),lam=lam)
     else:
         l1,beta,l2=cv_train(X=SUX, Y=SUy,mode=mode, model=model,maxEigen=np.max(Kva),K=1400)
     time_end = time.time()
     time_diff = time_end - time_start
     print '... finished in %.2fs' % (time_diff)
+    f=open('f.txt','a')
+    f.write('... finished in %.2fs----------------ALL' % (time_diff))
+    f.write('\n')
+    f.close()
 
     # res = {}
     # res['ldelta0'] = ldelta0
@@ -91,21 +101,21 @@ def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discov
     # res['combine_ss'] = ss
     # res['time'] = time_diff
     # res['monitor_nm'] = monitor_nm
-    # return res
-    beta_tmp = beta.copy()
-    beta_tmp[beta_tmp != 0.] = -1
-    beta_tmp[beta_tmp != -1] = 1
-    beta_tmp[beta_tmp == -1] = 0
-    print beta_tmp.sum()
+    # # return res
+    # beta_tmp = beta.copy()
+    # beta_tmp[beta_tmp != 0.] = -1
+    # beta_tmp[beta_tmp != -1] = 1
+    # beta_tmp[beta_tmp == -1] = 0
+    # print beta_tmp.sum()
     return beta
 
-def runLasso(X, Y, mode,model,maxEigen):
+def runLasso(X, Y, mode,model,maxEigen,lam=1e-2):
     learningRate=1e-5
     if model == 'lasso':
         if mode=='lmm2':
-            model = Lasso(lam=1, lr=learningRate)
+            model = Lasso(lam=lam*50, lr=learningRate)
         else:
-            model = Lasso(lam=1e-2, lr=learningRate)
+            model = Lasso(lam=lam, lr=learningRate)
         #print "lasso"
         model.fit(X, Y)
         return model.getBeta()
@@ -117,17 +127,17 @@ def runLasso(X, Y, mode,model,maxEigen):
         else:
             pgd = ProximalGradientDescent(learningRate=learningRate*1000, mode=mode)
         #print "tree"
-        model = TreeLasso(lambda_=1e-2, clusteringMethod='single', threhold=1.0, mu=0.1, maxEigen=maxEigen)
+        model = TreeLasso(lambda_=lam, clusteringMethod='single', threhold=1.0, mu=0.1, maxEigen=maxEigen)
         model.setXY(X, Y)
-        # f=open('f.txt','a')
-        # f.write('end\n')
-        # f.close()
+        f=open('f.txt','a')
+        f.write('end\n')
+        f.close()
         pgd.run(model, 't')
         return model.beta
     elif model == 'group':
         print "==group=="
         pgd = ProximalGradientDescent(learningRate=learningRate,mode=mode)  #* 2e4
-        model = GFlasso(lambda_flasso=1, gamma_flasso=0.7, mau=0.1)
+        model = GFlasso(lambda_flasso=lam*50, gamma_flasso=0.7, mau=0.1)
 
         # Set X, Y, correlation
         model.setXY(X, Y)
@@ -345,7 +355,7 @@ def cv_train(X, Y,mode,model,maxEigen, regMin=1e-30, regMax=1.0, K=100):
         # print("Iter:{}\tlambda:{}".format(iteration, lmbd), end="\t")
         # clf = Lasso(alpha=reg)
         # clf.fit(X, Y)
-        beta =runLasso(X, Y,mode, model,maxEigen)
+        beta =runLasso(X, Y,mode, model,maxEigen,lam=reg)
         k = len(np.where(beta!= 0)[0])
         # print reg, k
         ss.append((reg, k))
