@@ -17,6 +17,48 @@ def limitPrediction(l, num):
             r.append(0)
     return r
 
+
+def evaluateAT_bolt_case_select(n,roc,seed,pos):
+    Y, causal = dataLoader.load_data_AT_pheno(n, seed)
+    if n < 3:
+        n = str(n)
+    else:
+        n = 'n'
+    seed = str(seed)
+    l = []
+    for test in ['single', 'lasso']:
+        # print '+++++++++++++'
+        if test == 'single':
+            for K in ['_bolt', '_case', '_select']:
+                # print '-------------'
+                sig = np.loadtxt('../ATData/K' + n + '/' + test + K + '_' + seed + '.csv', delimiter=',')
+                sig = 1 - np.array(sig)
+                sig = np.nan_to_num(sig)
+                sigd = limitPrediction(sig, 100)
+                if roc:
+                    fpr, tpr = gwas_roc(sigd, causal[:, 0], positions=pos)
+                    # print auc(fpr, tpr)
+                    l.append(auc(fpr, tpr))
+                else:
+                    pr, re = gwas_precision_recall(sigd, causal[:, 0], positions=pos)
+                    # print auc(re, pr)
+                    l.append(auc(re, pr))
+        else:
+            for K in ['_bolt', '_case', '_select']:
+                # print '-------------'
+                bw = np.loadtxt('../ATData/K' + n + '/' + test + K + '_' + seed + '.csv', delimiter=',')
+                bw = np.abs(bw)
+                bw = limitPrediction(bw, 100)
+                if roc:
+                    fpr, tpr = gwas_roc(bw, causal[:, 0], positions=pos)
+                    # print auc(fpr, tpr)
+                    l.append(auc(fpr, tpr))
+                else:
+                    pr, re = gwas_precision_recall(bw, causal[:, 0], positions=pos)
+                    # print auc(re, pr)
+                    l.append(auc(re, pr))
+    return l
+
 def evaluateAT(n, roc, seed, pos):
     Y, causal = dataLoader.load_data_AT_pheno(n, seed)
     if n < 3:

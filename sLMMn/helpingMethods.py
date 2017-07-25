@@ -5,6 +5,15 @@ import scipy
 import numpy as np
 from scipy import stats
 
+def KFold(X,y,k=5):
+    foldsize = int(X.shape[0]/k)
+    for idx in range(k):
+        testlst = range(idx*foldsize,idx*foldsize+foldsize)
+        Xtrain = np.delete(X,testlst,0)
+        ytrain = np.delete(y,testlst,0)
+        Xtest = X[testlst]
+        ytest = y[testlst]
+        yield Xtrain, ytrain, Xtest, ytest
 def matrixMult(A, B):
     try:
         linalg.blas

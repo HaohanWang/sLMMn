@@ -13,6 +13,81 @@ from helpingMethods import *
 from utility import dataLoader
 
 from utility.simpleFunctions import *
+from BOLTLMM import BOLTLMM
+from lmm_select import lmm_select
+from LMMCaseControlAscertainment import LMMCaseControl
+
+##########for haohan  mode2!!!
+
+def train_bolt_case_select(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50, mode='linear',mode2='single'):
+
+    if mode=='bolt':
+        print "bolt",
+        clf = BOLTLMM()
+        f2=0.3
+        p=0.1
+        betaM = np.zeros((X.shape[1], y.shape[1]))
+        for i in range(y.shape[1]):
+            # if i % 5 == 0:
+            #     print "step: ", i, f2, p
+            temp = clf.train(X, y[:, i], f2, p)
+            temp = temp.reshape(temp.shape[0], )
+            betaM[:, i] = temp
+
+    if mode=='case':
+        print "case",
+        clf = LMMCaseControl()
+        betaM = np.zeros((X.shape[1], y.shape[1]))
+        K = np.dot(X, X.T)
+        for i in range(y.shape[1]):
+            clf.fit(X=X, y=y[:, i], K=K, Kva=None, Kve=None, mode='lmm')
+            betaM[:, i] = clf.getBeta()
+
+    if mode=='select':
+        print "select",
+        clf = lmm_select()
+        betaM = np.zeros((X.shape[1], y.shape[1]))
+        K = np.dot(X, X.T)
+        for i in range(y.shape[1]):
+            betaM[:, i] = clf.fit(X=X, y=y[:, i], K=K, Kva=None, Kve=None, mode='linear')
+        temp = np.zeros((X.shape[1],))
+        for i in range(X.shape[1]):
+            temp[i] = betaM[i, :].sum()
+        dense=0.05
+        s = np.argsort(temp)[0:int(X.shape[1] * dense)]
+        s = list(s)
+        s = sorted(s)
+        X2 = X[:, s]
+        K2 = np.dot(X2, X2.T)
+        for i in range(y.shape[1]):
+            betaM[:, i] = clf.fit2(X=X, y=y[:, i], K=K2, Kva=None, Kve=None, mode='lmm')
+        betaM[betaM<=(-np.log(0.05))]=0
+
+    if mode2=='single':
+
+        if len(np.where(betaM != 0)[0])>100:
+
+            threshold_max = 100
+            threshold_min = 1e-10
+            iteration = 0
+
+            while threshold_min<threshold_max and iteration<=100:
+                iteration+=1
+                threshold=np.exp((np.log(threshold_max)+np.log(threshold_min))/2.)
+                beta_temp=betaM.copy()
+                beta_temp[abs(beta_temp)<=threshold]=0
+                k=len(np.where(beta_temp != 0)[0])
+                if k<75:
+                    threshold_max=threshold
+                elif k>125:
+                    threshold_min=threshold
+                else:
+                    break
+            betaM[abs(betaM)<=threshold]=0
+
+    print "ok~"
+    return betaM
+
 
 
 def train(X, K, Kva, Kve, y, numintervals=100, ldeltamin=-5, ldeltamax=5, discoverNum=50, mode='linear'):
@@ -390,8 +465,31 @@ def run_AT(dataMode, seed):
             f0.writelines(str(ri) + '\t' + str(si) + '\n')
         f0.close()
 
+def run_AT_bolt_case_select(dataMode, seed):
+    discoverNum = 100
+    numintervals = 500
+    snps, K, Kva, Kve, = dataLoader.load_data_AT_basic()
+    Y, causal = dataLoader.load_data_AT_pheno(dataMode, seed)
+    if dataMode < 3:
+        dataMode = str(dataMode)
+    else:
+        dataMode = 'n'
+    seed = str(seed)
+    for mode2 in ['single', 'lasso']:
+        for mode in ['bolt','case','select']:
+            res = train_bolt_case_select(X=snps, K=K, y=Y, Kva=Kva, Kve=Kve, numintervals=numintervals, ldeltamin=-50, ldeltamax=50,
+                        discoverNum=discoverNum, mode=mode,mode2=mode2)
+
+            fileName2 = '../ATData/K' + dataMode + '/'+mode2+'_' + mode
+            f1 = open(fileName2 + '_' + seed + '.csv', 'w')
+            for wi in res:
+                f1.writelines(str(wi) + '\n')
+            f1.close()
+
 
 if __name__ == '__main__':
     at = int(sys.argv[1])
     snp = sys.argv[2]
     pass
+
+
